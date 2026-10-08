@@ -93,10 +93,10 @@
   .hero .actions{margin-top:34px;display:flex;flex-wrap:wrap;gap:14px}
   .vault{position:relative;width:min(440px,100%);justify-self:center;aspect-ratio:1}
   .vault svg{width:100%;height:100%;display:block;overflow:visible}
-  .vault{touch-action:none;cursor:grab;user-select:none;-webkit-user-select:none}
-  .vault.drag{cursor:grabbing}
-  .latch{fill:var(--steel-300);transition:fill .12s ease}
-  .latch.on{fill:var(--brass)}
+  .dial-ring{transform-origin:200px 200px;animation:combo 9s ease-in-out infinite}
+.latch{animation:latch 9s ease infinite}
+@keyframes combo{0%{transform:rotate(0)}18%{transform:rotate(240deg)}36%{transform:rotate(-130deg)}52%{transform:rotate(90deg)}66%,100%{transform:rotate(0)}}
+@keyframes latch{0%,66%{fill:#9FB0BF}70%,92%{fill:#C8964A}100%{fill:#9FB0BF}}
   .core,.wv{transition:stroke .4s ease, fill .4s ease}
   .vault.open .core{stroke:#F2C77E}
   .vault.open .wv{fill:#F2C77E}
