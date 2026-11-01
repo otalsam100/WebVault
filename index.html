@@ -169,9 +169,19 @@
     .latch,.core,.wv{transition:none}
     .btn{transition:none}
   }
+
+.progress-track{position:fixed;top:0;left:0;width:100%;height:3px;z-index:40}.progress-track span{display:block;height:100%;width:0;background:linear-gradient(90deg,#c8964a,#7ce7e0)}
+.vault-shell{position:relative}.vault-shell:before,.vault-shell:after{content:"";position:absolute;inset:2%;border:1px solid #c8964a55;border-radius:50%;transform:rotate(-25deg) scaleX(1.2);pointer-events:none}.vault-shell:after{inset:-5% 14%;transform:rotate(55deg);border-color:#7ce7e044}.vault{z-index:1;cursor:grab;touch-action:pan-y}.vault-hud{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-top:12px;color:#8fa2b4;font:600 .68rem ui-monospace,monospace;letter-spacing:.1em;text-transform:uppercase}.hud-dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#7ce7e0;box-shadow:0 0 12px #7ce7e0}
+.gadget-strip{display:flex;gap:9px;flex-wrap:wrap;margin-top:20px}.gadget{border:1px solid #7ce7e044;background:#142d3a;color:#b7d2d7;border-radius:99px;padding:8px 12px;font:600 .65rem ui-monospace,monospace;letter-spacing:.08em;text-transform:uppercase}.gadget b{color:#7ce7e0}
+.portfolio{background:#0c1722;color:#f3f7fa;position:relative;overflow:hidden}.portfolio:before{content:"";position:absolute;inset:0;background-image:linear-gradient(#7ce7e00b 1px,transparent 1px),linear-gradient(90deg,#7ce7e00b 1px,transparent 1px);background-size:42px 42px;pointer-events:none}.portfolio .wrap{position:relative}.portfolio .section-lead{color:#a9bac7}.kicker{font:700 .72rem ui-monospace,monospace;letter-spacing:.16em;text-transform:uppercase;color:#7ce7e0;margin-bottom:15px}.portfolio-head{display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap}.portfolio-count{font:700 .72rem ui-monospace,monospace;color:#7ce7e0}
+.demo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:40px}.demo-card{border:1px solid #2b4050;border-radius:15px;overflow:hidden;background:#142330;transition:transform .2s,border-color .2s}.demo-card:hover{transform:translateY(-5px);border-color:#7ce7e0}.demo-thumb{height:175px;display:flex;align-items:center;justify-content:center;padding:18px}.thumb-window{width:88%;height:135px;background:white;border-radius:8px;overflow:hidden;box-shadow:0 12px 35px #0006;transform:rotate(-2deg)}.thumb-bar{height:14px;background:#e8edf1;padding:4px 8px;display:flex;gap:4px}.thumb-bar i{width:5px;height:5px;background:#9eabb6;border-radius:50%}.thumb-content{height:121px;padding:16px;color:#1c3445}.thumb-content b{font:800 17px/1 Archivo,sans-serif;display:block}.thumb-content span{font-size:7px;display:block;margin-top:8px;letter-spacing:.1em}.thumb-blocks{display:flex;gap:5px;margin-top:10px}.thumb-blocks i{height:23px;flex:1;border-radius:3px}.demo-meta{padding:17px}.demo-meta small{font:700 .65rem ui-monospace,monospace;color:#7ce7e0;letter-spacing:.1em;text-transform:uppercase}.demo-meta h3{font-size:1.18rem;color:white;margin:7px 0}.demo-meta p{font-size:.9rem;color:#a9bac7;min-height:46px}.demo-open{width:100%;margin-top:14px;padding:11px 13px;display:flex;justify-content:space-between;background:transparent;border:1px solid #536b7d;border-radius:8px;color:white;font:600 .88rem "Instrument Sans",sans-serif;cursor:pointer}.demo-open:hover{background:#7ce7e0;color:#0c1722;border-color:#7ce7e0}
+.demo-modal{display:none;position:fixed;inset:0;z-index:60;background:#030a10dd;backdrop-filter:blur(10px);align-items:center;justify-content:center;padding:16px}.demo-modal.active{display:flex}.demo-dialog{width:min(1120px,100%);height:min(820px,95vh);background:#eaf0f4;border:1px solid #526879;border-radius:16px;overflow:hidden;display:flex;flex-direction:column}.demo-dialog-head{height:55px;flex:none;background:#101d29;color:white;display:flex;align-items:center;justify-content:space-between;padding:0 16px}.demo-dialog-head strong{font:700 .8rem ui-monospace,monospace;letter-spacing:.08em}.demo-close{border:1px solid #607587;background:transparent;color:white;border-radius:7px;padding:8px 11px;cursor:pointer}.demo-dialog iframe{border:0;width:100%;height:100%;background:white}
+@media(max-width:900px){.demo-grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:600px){.demo-grid{grid-template-columns:1fr}.demo-dialog{height:96vh}.vault-hud{font-size:.6rem}}@media(prefers-reduced-motion:reduce){.demo-card{transition:none}.demo-card:hover{transform:none}}
+
 </style>
 </head>
 <body>
+<div class="progress-track"><span id="scroll-progress"></span></div>
 <a class="skip" href="#main">Skip to content</a>
 
 <header class="top">
@@ -206,7 +216,7 @@
         </div>
       </div>
 
-      <div class="vault" role="img" aria-label="A vault combination dial that turns through a combination and unlocks. You can drag it to turn it yourself.">
+      <div class="vault-shell"><div class="vault" role="img" aria-label="A vault combination dial that turns through a combination and unlocks. You can drag it to turn it yourself.">
         <svg viewBox="0 0 400 400">
           <circle cx="200" cy="200" r="190" fill="#14212E"/>
           <circle cx="200" cy="200" r="190" fill="none" stroke="#C8964A" stroke-width="3"/>
@@ -217,7 +227,7 @@
           <text class="wv" x="200" y="214" text-anchor="middle" font-family="Archivo,sans-serif" font-weight="900" font-size="40" fill="#C8964A" style="font-stretch:112%">WV</text>
           <path class="latch" d="M200 6 L214 34 L186 34 Z"/>
         </svg>
-      </div>
+      </div><div class="vault-hud"><span><i class="hud-dot"></i> Vault system online</span><span>Encryption: AES-256</span></div><div class="gadget-strip"><span class="gadget"><b>01</b> Design engine</span><span class="gadget"><b>02</b> Live preview</span><span class="gadget"><b>03</b> Mobile first</span></div></div>
     </div>
   </section>
 
@@ -325,6 +335,7 @@
   </section>
 </main>
 
+<div class="demo-modal" id="demo-modal" role="dialog" aria-modal="true" aria-label="Website demo preview"><div class="demo-dialog"><div class="demo-dialog-head"><strong id="demo-title">WEBVAULT / LIVE CONCEPT</strong><button class="demo-close" id="demo-close" type="button">Close preview ✕</button></div><iframe id="demo-frame" title="Interactive website concept" sandbox="allow-scripts allow-forms"></iframe></div></div>
 <footer>
   <div class="wrap">
     <span>&copy; <span id="yr">2026</span> WebVault. Websites built to last.</span>
@@ -442,6 +453,29 @@
     render();
     play();
   })();
+
+
+  // Futuristic scroll telemetry and self-contained interactive website demos.
+  (function(){
+    var bar=document.getElementById("scroll-progress");
+    function progress(){var d=document.documentElement;bar.style.width=(d.scrollTop/Math.max(1,d.scrollHeight-d.clientHeight)*100)+"%";}
+    window.addEventListener("scroll",progress,{passive:true});progress();
+    var modal=document.getElementById("demo-modal"),frame=document.getElementById("demo-frame"),title=document.getElementById("demo-title"),close=document.getElementById("demo-close");
+    var data={
+      restaurant:["Restaurant & Café","SAGE & STONE","FARM TO TABLE • EST. 2018","Good food.<br>Good company.","Seasonal plates, thoughtful ingredients, and a table waiting for you.","Explore our menu","#b47b45","#f5efe5","#243f34","Georgia,serif",["Dinner menu","Weekend brunch","Private dining"]],
+      contractor:["Contractor & Construction","NORTHLINE BUILDERS","RESIDENTIAL • COMMERCIAL • REMODELING","Built right.<br>Built for life.","Craftsmanship you can see. Communication you can count on. From first sketch to final walkthrough.","Request an estimate","#d18b42","#edf2f5","#183247","Arial,sans-serif",["New construction","Kitchen & bath","Renovations"]],
+      salon:["Salon & Beauty","ATELIER SKIN STUDIO","BEAUTY, WITH INTENTION","Your moment.<br>Your glow.","A considered approach to skin, hair and the rituals that make you feel like yourself.","Book your appointment","#a68bbd","#f5f0f7","#342a40","Georgia,serif",["Signature facial","Color & styling","Beauty rituals"]],
+      realestate:["Real Estate","HOMESTEAD REALTY","FIND YOUR PLACE IN THE WORLD","A better way<br>to come home.","Local insight, thoughtful guidance, and the right home for the next chapter.","Explore properties","#b68b5c","#f2f0e9","#233c4a","Georgia,serif",["Featured homes","Buy with us","Sell with confidence"]],
+      shop:["Luxury E-commerce","FORM / OBJECT","OBJECTS FOR EVERYDAY LIVING","Less, but<br>better.","Considered essentials. Honest materials. Designed to stay with you.","Shop the collection","#c7a65f","#f4f1e9","#171717","Georgia,serif",["New arrivals","The essentials","Our philosophy"]],
+      fitness:["Gym & Fitness","PULSE PERFORMANCE","TRAIN WITH PURPOSE","Move with<br>purpose.","Expert coaching, smart programming, and a community that keeps you moving forward.","Start your trial","#55a99a","#eaf3ef","#153d3a","Arial,sans-serif",["Strength lab","Group training","Memberships"]],
+      legal:["Law & Professional","HARBOR LEGAL GROUP","COUNSEL THAT MOVES YOU FORWARD","Clarity when<br>it matters.","Practical counsel. Personal attention. A steady hand through complex decisions.","Schedule a consultation","#b18b55","#eff2f5","#1d334e","Georgia,serif",["Business law","Estate planning","Civil litigation"]]
+    };
+    function demo(d){return '<!doctype html><html><head><meta name="viewport" content="width=device-width,initial-scale=1"><style>*{box-sizing:border-box}body{margin:0;background:'+d[7]+';color:'+d[8]+';font:16px Arial,sans-serif}header{height:72px;padding:0 7%;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid '+d[8]+'22}header b{font:700 17px '+d[9]+';letter-spacing:.05em}header span{font-size:10px;letter-spacing:.13em}main{padding:9vh 9%;min-height:430px;background:radial-gradient(ellipse at 80% 30%,'+d[6]+'33,transparent 45%)}small{letter-spacing:.16em;font-size:10px;font-weight:bold}h1{font:clamp(44px,8vw,86px)/.98 '+d[9]+';letter-spacing:-.05em;max-width:760px;margin:24px 0}p{max-width:470px;line-height:1.7;color:'+d[8]+'bb}button{background:'+d[8]+';color:white;border:0;padding:15px 22px;border-radius:3px;font-weight:bold;margin-top:20px;cursor:pointer}.tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding:26px 9%}.tile{padding:22px 16px;background:white;border:1px solid '+d[8]+'18;min-height:100px}.tile b{display:block;font:20px '+d[9]+'}.tile small{display:block;margin-top:9px;color:'+d[6]+'}footer{padding:22px 9%;font-size:12px;border-top:1px solid '+d[8]+'22}@media(max-width:600px){.tiles{grid-template-columns:1fr}header span{display:none}}</style></head><body><header><b>'+d[1]+'</b><span>'+d[2]+'</span></header><main><small>'+d[2]+'</small><h1>'+d[3]+'</h1><p>'+d[4]+'</p><button onclick="document.getElementById(\'details\').scrollIntoView({behavior:\'smooth\'})">'+d[5]+' ↗</button></main><section class="tiles">'+d[10].map(function(x,i){return '<div class="tile"><small>0'+(i+1)+'</small><b>'+x+'</b></div>'}).join("")+'</section><footer id="details"><b>'+d[1]+'</b><p>This is a sample concept. Your real website will use your business details, photography and content.</p><button onclick="alert(\'Thanks for exploring! Contact WebVault to make it yours.\')">Make this my website</button></footer></body></html>';}
+    document.querySelectorAll("[data-demo]").forEach(function(b){b.addEventListener("click",function(){var d=data[b.dataset.demo];title.textContent="WEBVAULT / "+d[0].toUpperCase();frame.srcdoc=demo(d);modal.classList.add("active");document.body.style.overflow="hidden";close.focus();});});
+    function hide(){modal.classList.remove("active");frame.srcdoc="";document.body.style.overflow="";}
+    close.addEventListener("click",hide);modal.addEventListener("click",function(e){if(e.target===modal)hide();});document.addEventListener("keydown",function(e){if(e.key==="Escape"&&modal.classList.contains("active"))hide();});
+  })();
+
 
   // Quote form: opens the visitor's email app with the request filled in.
   // (To avoid needing an email app, swap in a free form service such as Formspree later.)
