@@ -370,6 +370,27 @@
     .hero:before,.hero:after,.vault:before,.vault:after,.vault .orbit-ring{animation:none!important}
   }
 
+  /* VAULT AI — guided website direction assistant */
+  .style-assistant{position:relative;overflow:hidden;padding:76px 0;background:linear-gradient(135deg,#101d2a,#172b3c 58%,#202b40);color:#f7f8fb}
+  .style-assistant:before{content:"";position:absolute;width:420px;height:420px;border:1px solid #c8964a33;border-radius:50%;right:-130px;top:-210px;box-shadow:0 0 0 35px #c8964a0d,0 0 0 75px #c8964a08;pointer-events:none}
+  .style-assistant .kicker{color:#d8b77e}
+  .style-assistant h2{color:#fff;max-width:720px}
+  .style-assistant .section-lead{color:#c7d0db;max-width:700px}
+  .assistant-shell{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1fr) minmax(270px,.82fr);gap:24px;margin-top:30px}
+  .assistant-panel,.assistant-output{border:1px solid #ffffff20;border-radius:18px;background:#ffffff0b;backdrop-filter:blur(12px);padding:clamp(20px,4vw,32px)}
+  .assistant-panel label{display:block;color:#f2f4f8;font-weight:650;margin:18px 0 8px}
+  .assistant-panel select{width:100%;padding:14px 15px;border-radius:10px;border:1px solid #ffffff35;background:#172b3c;color:#fff;font:inherit}
+  .assistant-panel select:focus{outline:2px solid #d8b77e;outline-offset:2px}
+  .assistant-run{margin-top:22px;width:100%;border:0;border-radius:10px;padding:15px 20px;background:linear-gradient(110deg,#d9b77c,#f0d9a9);color:#182431;font-weight:800;cursor:pointer}
+  .assistant-output{display:flex;flex-direction:column;justify-content:center;min-height:100%;background:linear-gradient(145deg,#ffffff12,#ffffff05)}
+  .assistant-orb{width:54px;height:54px;border:1px solid #d8b77e88;border-radius:50%;display:grid;place-items:center;color:#e8c98f;font-size:22px;box-shadow:0 0 28px #d8b77e22;margin-bottom:20px}
+  .assistant-output h3{font-size:1.45rem;color:#fff;margin:8px 0 12px}
+  .assistant-output p,.assistant-output li{color:#c7d0db;line-height:1.65}
+  .assistant-output ul{padding-left:19px;margin:8px 0 20px}
+  .assistant-output .assistant-cta{display:inline-flex;align-self:flex-start;margin-top:8px;color:#f2d7a6;font-weight:750;text-decoration:none;border-bottom:1px solid #d8b77e;padding-bottom:5px}
+  .assistant-hint{font-size:.85rem;color:#aebdca;margin:12px 0 0}
+  @media(max-width:760px){.assistant-shell{grid-template-columns:1fr}.style-assistant{padding:58px 0}}
+
 </style>
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self' mailto:; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: https:; frame-src 'self' data: blob:; connect-src 'self'; upgrade-insecure-requests">
@@ -576,6 +597,54 @@
     </div>
   </section>
 
+  <!-- VAULT AI STYLE ASSISTANT -->
+  <section id="style-assistant" class="style-assistant" aria-labelledby="assistant-h">
+    <div class="wrap">
+      <p class="kicker">WEBVAULT INTELLIGENCE / STYLE FINDER</p>
+      <h2 id="assistant-h">Not sure what your website should look like?</h2>
+      <p class="section-lead">Tell us a little about your business. Our guided style assistant will suggest a visual direction and the features that could help your customers take the next step.</p>
+      <div class="assistant-shell">
+        <div class="assistant-panel">
+          <p class="kicker">LET'S FIND YOUR DIRECTION</p>
+          <label for="assistant-business">01 / What kind of business do you run?</label>
+          <select id="assistant-business">
+            <option value="restaurant">Restaurant, café or food business</option>
+            <option value="contractor">Contractor or home services</option>
+            <option value="beauty">Salon, beauty or wellness</option>
+            <option value="professional">Law firm or professional services</option>
+            <option value="realestate">Real estate</option>
+            <option value="retail">Retail or online store</option>
+            <option value="fitness">Gym, trainer or fitness studio</option>
+            <option value="other">Something else</option>
+          </select>
+          <label for="assistant-vibe">02 / What should your brand feel like?</label>
+          <select id="assistant-vibe">
+            <option value="modern">Modern & confident</option>
+            <option value="minimal">Clean & minimal</option>
+            <option value="luxury">Premium & elegant</option>
+            <option value="warm">Warm & welcoming</option>
+            <option value="bold">Bold & energetic</option>
+          </select>
+          <label for="assistant-goal">03 / What matters most when people visit?</label>
+          <select id="assistant-goal">
+            <option value="leads">More calls and quote requests</option>
+            <option value="bookings">More bookings and appointments</option>
+            <option value="sales">More product sales</option>
+            <option value="trust">Build trust and explain my services</option>
+          </select>
+          <button class="assistant-run" id="assistant-generate" type="button">Generate my website direction ↗</button>
+          <p class="assistant-hint">A quick guided starting point. No account or sign-up required.</p>
+        </div>
+        <div class="assistant-output" id="assistant-result" aria-live="polite">
+          <div class="assistant-orb" aria-hidden="true">✳</div>
+          <p class="kicker">YOUR DESIGN BRIEF / AWAITING INPUT</p>
+          <h3>Your next great website starts here.</h3>
+          <p>Choose your business type, brand personality and main goal. We'll bring the pieces together into a direction you can share with WebVault.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- PRICING -->
   <section id="pricing" aria-labelledby="price-h" style="padding-top:0">
     <div class="wrap">
@@ -770,6 +839,53 @@
     close.addEventListener("click",hide);modal.addEventListener("click",function(e){if(e.target===modal)hide();});document.addEventListener("keydown",function(e){if(e.key==="Escape"&&modal.classList.contains("active"))hide();});
   })();
 
+
+  // Guided WebVault style assistant: local recommendations, no external AI service.
+  (function(){
+    var button=document.getElementById("assistant-generate");
+    var result=document.getElementById("assistant-result");
+    if(!button||!result)return;
+    var businesses={
+      restaurant:{name:"Restaurant & food",features:["A photo-led menu and signature dishes","Hours, location and one-tap directions","Easy reservations or order links"],layout:"Lead with beautiful food photography, a clear menu and an obvious reservation or order action."},
+      contractor:{name:"Contractor & home services",features:["Service areas and project gallery","Trust-building reviews and credentials","Prominent estimate request and click-to-call"],layout:"Lead with completed project photos, clear service categories and a strong request-an-estimate path."},
+      beauty:{name:"Beauty & wellness",features:["Service menu and treatment details","Booking and contact links","Gallery, reviews and social proof"],layout:"Use a polished visual identity, calming imagery and a simple path to book an appointment."},
+      professional:{name:"Professional services",features:["Clear practice or service-area overview","Team, credentials and testimonials","Consultation request and direct contact"],layout:"Use confident typography, clear service pages and trust signals that make it easy to request a consultation."},
+      realestate:{name:"Real estate",features:["Featured properties and listing links","Agent introduction and local expertise","Buyer/seller enquiry forms"],layout:"Use strong property imagery, local expertise and clear paths for buyers and sellers."},
+      retail:{name:"Retail & e-commerce",features:["Product collections and category navigation","Product photography and clear pricing","Secure checkout through a suitable store platform"],layout:"Make products the hero, keep navigation simple and guide shoppers from discovery to checkout."},
+      fitness:{name:"Fitness & training",features:["Programs, classes and membership options","Trainer profiles and member stories","Trial or membership enquiry"],layout:"Show energy and community with bold program sections and a clear way to start training."},
+      other:{name:"Your business",features:["A clear explanation of what you offer","Proof that helps visitors trust you","A simple next step to contact or buy"],layout:"Build around your most important customer action, with clear messaging and visuals that fit your brand."}
+    };
+    var vibes={
+      modern:{name:"Modern & confident",palette:"Deep navy, crisp white and a focused accent color",type:"Strong sans-serif headlines and clean geometric details"},
+      minimal:{name:"Clean & minimal",palette:"Warm white, charcoal and restrained neutral tones",type:"Generous spacing, refined typography and uncluttered sections"},
+      luxury:{name:"Premium & elegant",palette:"Deep charcoal, ivory and champagne gold",type:"Editorial serif headlines, subtle motion and polished imagery"},
+      warm:{name:"Warm & welcoming",palette:"Soft cream, natural earth tones and gentle contrast",type:"Friendly typography, approachable copy and inviting photography"},
+      bold:{name:"Bold & energetic",palette:"High-contrast dark and light tones with a vivid accent",type:"Oversized headlines, dynamic imagery and confident calls to action"}
+    };
+    var goals={leads:"Make calling and requesting a quote effortless.",bookings:"Keep appointment booking visible throughout the experience.",sales:"Make product discovery, details and checkout the priority.",trust:"Explain your value clearly and reinforce it with proof and testimonials."};
+    button.addEventListener("click",function(){
+      var b=businesses[document.getElementById("assistant-business").value]||businesses.other;
+      var v=vibes[document.getElementById("assistant-vibe").value]||vibes.modern;
+      var g=goals[document.getElementById("assistant-goal").value]||goals.leads;
+      result.innerHTML="";
+      var orb=document.createElement("div");orb.className="assistant-orb";orb.setAttribute("aria-hidden","true");orb.textContent="✳";result.appendChild(orb);
+      var tag=document.createElement("p");tag.className="kicker";tag.textContent="YOUR WEBVAULT DESIGN DIRECTION";result.appendChild(tag);
+      var heading=document.createElement("h3");heading.textContent=b.name+" / "+v.name;result.appendChild(heading);
+      var intro=document.createElement("p");intro.textContent=b.layout;result.appendChild(intro);
+      var palette=document.createElement("p");palette.textContent="COLOR DIRECTION — "+v.palette+". "+v.type+".";result.appendChild(palette);
+      var goal=document.createElement("p");goal.textContent="PRIMARY FOCUS — "+g;result.appendChild(goal);
+      var listTitle=document.createElement("p");listTitle.textContent="FEATURES TO CONSIDER";listTitle.className="kicker";result.appendChild(listTitle);
+      var list=document.createElement("ul");b.features.forEach(function(item){var li=document.createElement("li");li.textContent=item;list.appendChild(li);});result.appendChild(list);
+      var link=document.createElement("a");link.className="assistant-cta";link.href="#contact";link.textContent="Build a website in this direction ↗";
+      link.addEventListener("click",function(){
+        var biz=document.querySelector('#quote-form [name="biz"]');
+        var msg=document.querySelector('#quote-form [name="msg"]');
+        if(biz)biz.value=b.name;
+        if(msg)msg.value="I'd like a website with a "+v.name.toLowerCase()+" style. Main goal: "+g+" Suggested direction: "+b.layout+" Features: "+b.features.join("; ")+".";
+      });
+      result.appendChild(link);
+    });
+  })();
 
   // Quote form: opens the visitor's email app with the request filled in.
   // (To avoid needing an email app, swap in a free form service such as Formspree later.)
