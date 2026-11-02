@@ -228,6 +228,84 @@
   @keyframes particleDrift{from{transform:translate3d(-1%,0,0);opacity:.25}to{transform:translate3d(1.5%,-1.5%,0);opacity:.6}}
   @media(prefers-reduced-motion:reduce){.hero:before,.hero:after{animation:none!important}}
 
+
+  /* WebVault: refined ivory + celestial finish */
+  :root{
+    --steel-50:#FBFCFE;--steel-100:#E8EDF3;--steel-300:#C7D1DC;
+    --ink:#172638;--ink-soft:#536477;--brass:#B99255;--brass-deep:#98713A;--paper:#FFFFFF;
+  }
+  body{background:#fff;color:var(--ink)}
+  header.top{background:rgba(255,255,255,.91);border-bottom:1px solid #e8edf3}
+  .hero{
+    background:
+      radial-gradient(ellipse at 78% 43%,rgba(119,157,211,.13),transparent 32%),
+      radial-gradient(ellipse at 20% 78%,rgba(184,157,207,.11),transparent 34%),
+      radial-gradient(ellipse at 55% 4%,rgba(220,194,147,.14),transparent 30%),
+      linear-gradient(135deg,#fff 0%,#fbfcff 54%,#f7f9fd 100%);
+    color:var(--ink)
+  }
+  .hero:before{
+    opacity:.24;background-image:
+      radial-gradient(circle,#9baed0 1px,transparent 1.6px),
+      radial-gradient(circle,#c5a66d 1px,transparent 1.6px),
+      radial-gradient(circle,#a99ac8 1px,transparent 1.6px);
+    background-size:83px 83px,127px 127px,173px 173px;
+    background-position:0 0,38px 49px,81px 22px;
+    mask-image:radial-gradient(ellipse at 65% 48%,#000 0%,transparent 75%);
+    animation:particleDrift 28s ease-in-out infinite alternate
+  }
+  .hero:after{
+    opacity:.38;background:
+      radial-gradient(ellipse at 72% 48%,rgba(130,157,202,.12),transparent 43%),
+      radial-gradient(ellipse at 32% 88%,rgba(196,169,119,.10),transparent 38%);
+    animation:particleDrift 30s ease-in-out infinite alternate
+  }
+  .hero h1{color:#172638;text-shadow:0 3px 22px rgba(75,100,135,.08)}
+  .hero p.lede{color:#536477}
+  .hero .btn.ghost{color:#172638;border-color:#aab6c4}
+  .hero .btn.ghost:hover{background:#172638;color:#fff;border-color:#172638}
+  .band{background:#F5F7FA;color:#172638;border-top:1px solid #e8edf3;border-bottom:1px solid #e8edf3}
+  .band .section-lead{color:#536477}
+  .contact h2{color:#172638}
+  .direct a{color:#172638}
+  input,textarea{border-color:#d5dee8;background:#fff;color:#172638}
+  input::placeholder,textarea::placeholder{color:#8795a5}
+  .note{color:#68798c}
+  .portfolio{background:#F8FAFC;color:#172638;border-top:1px solid #e9eef4;border-bottom:1px solid #e9eef4}
+  .portfolio:before{
+    background-image:linear-gradient(#8da2bd0a 1px,transparent 1px),linear-gradient(90deg,#8da2bd0a 1px,transparent 1px)
+  }
+  .portfolio .section-lead{color:#536477}
+  .kicker,.portfolio-count{color:#98713A}
+  .demo-card{background:#fff;border:1px solid #e1e8f0;box-shadow:0 12px 30px -24px rgba(23,38,56,.42)}
+  .demo-card:hover{border-color:#b99255}
+  .demo-meta small{color:#98713A}
+  .demo-meta h3{color:#172638}
+  .demo-meta p{color:#5e6e80}
+  .demo-open{border-color:#c9d3df;color:#172638}
+  .demo-open:hover{background:#172638;color:#fff;border-color:#172638}
+  footer{background:#f5f7fa;color:#637286;border-top:1px solid #e5ebf2}
+  footer a{color:#172638}
+  .vault{filter:drop-shadow(0 18px 34px rgba(58,79,111,.15))}
+  .vault:before{
+    background:conic-gradient(from 0deg,transparent 0 16%,rgba(129,158,205,.28) 22%,transparent 30% 46%,rgba(190,157,101,.42) 53%,transparent 62% 80%,rgba(168,151,202,.28) 88%,transparent 94%);
+    filter:blur(15px);opacity:.72
+  }
+  .vault:after{box-shadow:0 0 30px rgba(185,146,85,.13),inset 0 0 34px rgba(126,154,196,.09)}
+  .vault .core{filter:drop-shadow(0 0 8px rgba(185,146,85,.22))}
+  .vault .wv{filter:drop-shadow(0 0 8px rgba(185,146,85,.24))}
+  .vault-hud{color:#718196}
+  .gadget{background:#fff;color:#64758a;border-color:#dce4ed}
+  .gadget b{color:#98713A}
+  .hud-dot{background:#8ca8ca;box-shadow:0 0 10px rgba(140,168,202,.45)}
+  .progress-track span{background:linear-gradient(90deg,#b99255,#9aaed0,#b9a7ce)}
+  .steps h3{color:#172638}
+  .steps p{color:#5b6b7d}
+  .includes dd{color:#536477}
+  .demo-dialog{background:#fff;border-color:#dce4ed}
+  .demo-dialog-head{background:#172638}
+  @media(prefers-reduced-motion:reduce){.hero:before,.hero:after{animation:none!important}}
+
 </style>
 </head>
 <body>
