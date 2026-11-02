@@ -306,6 +306,42 @@
   .demo-dialog-head{background:#172638}
   @media(prefers-reduced-motion:reduce){.hero:before,.hero:after{animation:none!important}}
 
+
+  /* More visible, gently animated celestial dust */
+  .hero:before{
+    opacity:.62;
+    background-image:
+      radial-gradient(circle,rgba(111,139,185,.82) 1.15px,transparent 2px),
+      radial-gradient(circle,rgba(185,146,85,.78) 1.25px,transparent 2.1px),
+      radial-gradient(circle,rgba(157,137,190,.72) 1px,transparent 1.9px),
+      radial-gradient(circle,rgba(255,255,255,.98) 1.5px,transparent 2.4px);
+    background-size:73px 73px,109px 109px,151px 151px,197px 197px;
+    background-position:0 0,31px 47px,78px 19px,22px 93px;
+    mask-image:radial-gradient(ellipse at 66% 48%,#000 0%,rgba(0,0,0,.9) 48%,transparent 82%);
+    animation:starfieldFloat 24s linear infinite,starfieldTwinkle 5s ease-in-out infinite alternate
+  }
+  .hero:after{
+    opacity:.58;
+    background:
+      radial-gradient(circle at 18% 30%,rgba(185,146,85,.24) 0 1px,transparent 2px),
+      radial-gradient(circle at 78% 62%,rgba(125,151,194,.28) 0 1.5px,transparent 2.5px),
+      radial-gradient(ellipse at 72% 48%,rgba(130,157,202,.15),transparent 43%),
+      radial-gradient(ellipse at 32% 88%,rgba(196,169,119,.13),transparent 38%);
+    background-size:130px 130px,170px 170px,auto,auto;
+    animation:nebulaDrift 19s ease-in-out infinite alternate
+  }
+  .vault:before{animation:haloSpin 22s linear infinite,haloPulse 5s ease-in-out infinite alternate}
+  .vault:after{animation:coreBreathe 5s ease-in-out infinite}
+  .vault .orbit-ring{animation-duration:30s}
+  .vault .orbit-ring.reverse{animation-duration:38s}
+  @keyframes starfieldFloat{from{background-position:0 0,31px 47px,78px 19px,22px 93px}to{background-position:73px 73px,140px 156px,229px 170px,219px 290px}}
+  @keyframes starfieldTwinkle{from{opacity:.38}to{opacity:.78}}
+  @keyframes nebulaDrift{from{transform:translate3d(-1%,.5%,0) scale(1)}to{transform:translate3d(1.5%,-1%,0) scale(1.035)}}
+  @keyframes haloPulse{from{opacity:.48}to{opacity:.9}}
+  @media(prefers-reduced-motion:reduce){
+    .hero:before,.hero:after,.vault:before,.vault:after,.vault .orbit-ring{animation:none!important}
+  }
+
 </style>
 </head>
 <body>
