@@ -201,6 +201,33 @@
   @keyframes statusPulse{0%,100%{opacity:.55;box-shadow:0 0 4px #7ce7e0}50%{opacity:1;box-shadow:0 0 15px #7ce7e0}}
   @media(prefers-reduced-motion:reduce){.vault:before,.vault:after,.vault .orbit-ring,.vault-hud .hud-dot{animation:none!important}}
 
+
+  /* Atmospheric animated vault backdrop */
+  .hero{position:relative;isolation:isolate;background:
+    radial-gradient(ellipse at 78% 42%,rgba(124,231,224,.10),transparent 34%),
+    radial-gradient(ellipse at 18% 78%,rgba(200,150,74,.11),transparent 36%),
+    linear-gradient(135deg,#101e2b 0%,#172b3b 48%,#101d2a 100%);color:#f4f7fa}
+  .hero:before,.hero:after{content:"";position:absolute;inset:-35%;pointer-events:none;z-index:-1}
+  .hero:before{opacity:.34;background-image:
+    linear-gradient(rgba(124,231,224,.09) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(124,231,224,.09) 1px,transparent 1px);
+    background-size:54px 54px;
+    mask-image:radial-gradient(ellipse at center,#000 0%,transparent 72%);
+    animation:blueprintDrift 32s linear infinite}
+  .hero:after{opacity:.46;background:
+    radial-gradient(circle at 20% 30%,rgba(200,150,74,.22) 0 1px,transparent 2px),
+    radial-gradient(circle at 72% 62%,rgba(124,231,224,.25) 0 1.5px,transparent 2.5px),
+    radial-gradient(circle at 44% 82%,rgba(200,150,74,.18) 0 1px,transparent 2px);
+    background-size:190px 190px,260px 260px,230px 230px;
+    animation:particleDrift 24s ease-in-out infinite alternate}
+  .hero h1{color:#f7fafc;text-shadow:0 5px 28px rgba(0,0,0,.22)}
+  .hero p.lede{color:#b9c8d4}
+  .hero .btn.ghost{color:#f4f7fa;border-color:#718494}
+  .hero .btn.ghost:hover{background:#f4f7fa;color:#14212e;border-color:#f4f7fa}
+  @keyframes blueprintDrift{from{transform:translate3d(0,0,0)}to{transform:translate3d(54px,27px,0)}}
+  @keyframes particleDrift{from{transform:translate3d(-1%,0,0);opacity:.25}to{transform:translate3d(1.5%,-1.5%,0);opacity:.6}}
+  @media(prefers-reduced-motion:reduce){.hero:before,.hero:after{animation:none!important}}
+
 </style>
 </head>
 <body>
