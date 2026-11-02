@@ -178,6 +178,29 @@
 .demo-modal{display:none;position:fixed;inset:0;z-index:60;background:#030a10dd;backdrop-filter:blur(10px);align-items:center;justify-content:center;padding:16px}.demo-modal.active{display:flex}.demo-dialog{width:min(1120px,100%);height:min(820px,95vh);background:#eaf0f4;border:1px solid #526879;border-radius:16px;overflow:hidden;display:flex;flex-direction:column}.demo-dialog-head{height:55px;flex:none;background:#101d29;color:white;display:flex;align-items:center;justify-content:space-between;padding:0 16px}.demo-dialog-head strong{font:700 .8rem ui-monospace,monospace;letter-spacing:.08em}.demo-close{border:1px solid #607587;background:transparent;color:white;border-radius:7px;padding:8px 11px;cursor:pointer}.demo-dialog iframe{border:0;width:100%;height:100%;background:white}
 @media(max-width:900px){.demo-grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:600px){.demo-grid{grid-template-columns:1fr}.demo-dialog{height:96vh}.vault-hud{font-size:.6rem}}@media(prefers-reduced-motion:reduce){.demo-card{transition:none}.demo-card:hover{transform:none}}
 
+
+  /* Premium vault reveal */
+  .vault{isolation:isolate;filter:drop-shadow(0 18px 34px #07111b55)}
+  .vault:before{content:"";position:absolute;inset:-5%;border-radius:50%;z-index:-1;pointer-events:none;background:conic-gradient(from 0deg,transparent 0 18%,#7ce7e055 23%,transparent 29% 48%,#c8964a88 54%,transparent 62% 82%,#7ce7e055 88%,transparent 94%);filter:blur(12px);opacity:.7;animation:haloSpin 12s linear infinite}
+  .vault:after{content:"";position:absolute;inset:7%;border-radius:50%;z-index:-1;pointer-events:none;box-shadow:0 0 28px #c8964a22,inset 0 0 30px #7ce7e00d;animation:coreBreathe 3.6s ease-in-out infinite}
+  .vault svg{position:relative;z-index:1}
+  .vault .orbit-ring{transform-origin:200px 200px;animation:orbitSpin 18s linear infinite}
+  .vault .orbit-ring.reverse{animation-direction:reverse;animation-duration:24s}
+  .vault .energy-arc{fill:none;stroke-linecap:round;filter:drop-shadow(0 0 5px #7ce7e0)}
+  .vault .core{filter:drop-shadow(0 0 8px #c8964a66)}
+  .vault .wv{filter:drop-shadow(0 0 9px #c8964a88)}
+  .vault.open .core{filter:drop-shadow(0 0 18px #f2c77e)}
+  .vault.open .wv{filter:drop-shadow(0 0 16px #f2c77e)}
+  .vault.open:before{opacity:1;filter:blur(16px);animation-duration:4s}
+  .vault.open:after{box-shadow:0 0 55px #f2c77e55,inset 0 0 35px #7ce7e022}
+  .vault-hud .hud-dot{animation:statusPulse 1.8s ease-in-out infinite}
+  .vault.drag{cursor:grabbing}
+  @keyframes haloSpin{to{transform:rotate(360deg)}}
+  @keyframes orbitSpin{to{transform:rotate(360deg)}}
+  @keyframes coreBreathe{0%,100%{opacity:.45;transform:scale(.98)}50%{opacity:1;transform:scale(1.025)}}
+  @keyframes statusPulse{0%,100%{opacity:.55;box-shadow:0 0 4px #7ce7e0}50%{opacity:1;box-shadow:0 0 15px #7ce7e0}}
+  @media(prefers-reduced-motion:reduce){.vault:before,.vault:after,.vault .orbit-ring,.vault-hud .hud-dot{animation:none!important}}
+
 </style>
 </head>
 <body>
@@ -219,6 +242,20 @@
 
       <div class="vault-shell"><div class="vault" role="img" aria-label="A vault combination dial that turns through a combination and unlocks. You can drag it to turn it yourself.">
         <svg viewBox="0 0 400 400">
+          <defs>
+            <radialGradient id="vaultGlow"><stop offset="0" stop-color="#7ce7e0" stop-opacity=".16"/><stop offset="1" stop-color="#7ce7e0" stop-opacity="0"/></radialGradient>
+            <filter id="softGlow" x="-80%" y="-80%" width="260%" height="260%"><feGaussianBlur stdDeviation="5" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          </defs>
+          <circle cx="200" cy="200" r="184" fill="url(#vaultGlow)"/>
+          <g class="orbit-ring" fill="none" pointer-events="none">
+            <circle cx="200" cy="200" r="198" stroke="#7ce7e0" stroke-opacity=".35" stroke-width="1" stroke-dasharray="2 13"/>
+            <circle cx="200" cy="200" r="193" stroke="#c8964a" stroke-opacity=".75" stroke-width="2" stroke-dasharray="42 280" filter="url(#softGlow)"/>
+            <circle cx="200" cy="2" r="3.5" fill="#7ce7e0" filter="url(#softGlow)"/>
+          </g>
+          <g class="orbit-ring reverse" fill="none" pointer-events="none">
+            <circle cx="200" cy="200" r="180" stroke="#7ce7e0" stroke-opacity=".22" stroke-width="1.5" stroke-dasharray="1 18"/>
+            <circle cx="200" cy="20" r="2.5" fill="#c8964a" filter="url(#softGlow)"/>
+          </g>
           <circle cx="200" cy="200" r="190" fill="#14212E"/>
           <circle cx="200" cy="200" r="190" fill="none" stroke="#C8964A" stroke-width="3"/>
           <g id="ticks" stroke="#9FB0BF"></g>
