@@ -1058,6 +1058,51 @@
 })();
 </script>
 
+<script>
+(function(){
+  var modal=document.getElementById("demo-modal");
+  var frame=document.getElementById("demo-frame");
+  var title=document.getElementById("demo-title");
+  var close=document.getElementById("demo-close");
+  if(!modal||!frame||!title||!close)return;
+  var pages={
+    restaurant:"Restaurant & Café",
+    contractor:"Contractor & Construction",
+    salon:"Salon & Beauty",
+    realestate:"Real Estate",
+    shop:"Luxury E-commerce",
+    fitness:"Gym & Fitness",
+    legal:"Law & Professional"
+  };
+  function openDemo(key){
+    if(!Object.prototype.hasOwnProperty.call(pages,key))return;
+    title.textContent="WEBVAULT / "+pages[key].toUpperCase();
+    frame.removeAttribute("srcdoc");
+    frame.src="demos/"+key+".html";
+    modal.classList.add("active");
+    modal.setAttribute("aria-hidden","false");
+    document.body.style.overflow="hidden";
+    close.focus();
+  }
+  function hideDemo(){
+    modal.classList.remove("active");
+    modal.setAttribute("aria-hidden","true");
+    frame.removeAttribute("src");
+    document.body.style.overflow="";
+  }
+  document.querySelectorAll("[data-demo]").forEach(function(button){
+    button.addEventListener("click",function(){openDemo(button.getAttribute("data-demo"));});
+  });
+  close.addEventListener("click",hideDemo);
+  modal.addEventListener("click",function(event){if(event.target===modal)hideDemo();});
+  document.addEventListener("keydown",function(event){
+    if(event.key==="Escape"&&modal.classList.contains("active"))hideDemo();
+  });
+  frame.addEventListener("error",function(){
+    title.textContent="DEMO PREVIEW COULD NOT LOAD";
+  });
+})();
+</script>
 </body></html>';}
     document.querySelectorAll("[data-demo]").forEach(function(b){b.addEventListener("click",function(){var d=data[b.dataset.demo];title.textContent="WEBVAULT / "+d[0].toUpperCase();var demoPages={restaurant:"restaurant",contractor:"contractor",salon:"salon",realestate:"realestate",shop:"shop",fitness:"fitness",legal:"legal"};frame.removeAttribute("srcdoc");frame.src="demos/"+demoPages[b.dataset.demo]+".html";modal.classList.add("active");document.body.style.overflow="hidden";close.focus();});});
     function hide(){modal.classList.remove("active");frame.removeAttribute("src");frame.srcdoc="";document.body.style.overflow="";}
