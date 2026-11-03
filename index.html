@@ -391,6 +391,47 @@
   .assistant-hint{font-size:.85rem;color:#aebdca;margin:12px 0 0}
   @media(max-width:760px){.assistant-shell{grid-template-columns:1fr}.style-assistant{padding:58px 0}}
 
+
+/* Cinematic WebVault entrance */
+#wv-intro{position:fixed;inset:0;z-index:9999;display:grid;place-items:center;overflow:hidden;background:radial-gradient(ellipse at 50% 45%,#263b4c 0%,#101d29 48%,#050b11 100%);color:#f7f4ee;perspective:1200px;isolation:isolate}
+#wv-intro[hidden]{display:none}
+#wv-intro:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent 0 3px,#ffffff06 4px),radial-gradient(ellipse at center,transparent 30%,#02060bc9 100%);pointer-events:none;z-index:5}
+#wv-intro .wv-intro-top{position:absolute;top:clamp(20px,5vh,48px);left:0;right:0;text-align:center;z-index:8;font:700 11px/1.4 ui-monospace,monospace;letter-spacing:.28em;color:#d6c19a}
+#wv-intro .wv-intro-top span{display:block;margin-top:8px;color:#9eafbc;font-size:9px;letter-spacing:.2em}
+#wv-intro .wv-skip{position:absolute;right:24px;top:22px;z-index:10;border:1px solid #d4bd8a77;border-radius:999px;background:#101d29b8;color:#f7f4ee;padding:10px 16px;font:600 12px "Instrument Sans",sans-serif;cursor:pointer;backdrop-filter:blur(8px)}
+#wv-intro .wv-stage{position:relative;width:min(76vw,620px);aspect-ratio:1;transform-style:preserve-3d;transform:translateZ(0);z-index:2}
+#wv-intro .wv-chamber{position:absolute;inset:5%;border-radius:50%;background:radial-gradient(circle,#e8c98b 0%,#8d744f 2%,#1a2935 15%,#0b141d 56%,#03070c 72%);box-shadow:0 0 0 12px #111c27,0 0 0 15px #b28a4c66,0 0 90px #d4a95d44,inset 0 0 55px #000;overflow:hidden}
+#wv-intro .wv-chamber:before{content:"";position:absolute;inset:8%;border:2px solid #c6a66c88;border-radius:50%;box-shadow:0 0 0 14px #0a1119,0 0 0 16px #b28a4c55,0 0 0 31px #0a1119,0 0 0 33px #b28a4c33}
+#wv-intro .wv-tunnel{position:absolute;left:50%;top:50%;width:42%;height:42%;border-radius:50%;transform:translate(-50%,-50%);background:radial-gradient(circle,#f9e4b7 0%,#b58b4d 9%,#273d4b 22%,#101c27 54%,#03070b 72%);box-shadow:0 0 38px #d7b16a77,inset 0 0 30px #000}
+#wv-intro .wv-tunnel:before,#wv-intro .wv-tunnel:after{content:"";position:absolute;inset:12%;border:2px solid #c9a76b88;border-radius:50%;box-shadow:0 0 0 10px #101d28,0 0 0 12px #b28a4c66}
+#wv-intro .wv-tunnel:after{inset:29%;border-color:#f0d7a5;box-shadow:0 0 24px #f4d9a1,inset 0 0 20px #e9c77d}
+#wv-intro .wv-door{position:absolute;inset:0;border-radius:50%;transform-origin:9% 50%;transform-style:preserve-3d;background:radial-gradient(circle at 38% 32%,#83909a 0%,#4d5b66 13%,#273642 31%,#111e29 54%,#070e15 68%,#3d4b55 73%,#101a23 78%,#59636b 82%,#17232d 88%,#0a1118 100%);border:12px solid #17232d;box-shadow:inset 0 0 0 5px #9b8359,inset 0 0 0 11px #27333c,inset 0 0 35px #000,0 20px 45px #000b;z-index:3;backface-visibility:visible}
+#wv-intro .wv-door:before{content:"";position:absolute;inset:7%;border-radius:50%;border:3px solid #c7a56c;box-shadow:0 0 0 7px #182630,0 0 0 9px #8d744f,inset 0 0 25px #000}
+#wv-intro .wv-door:after{content:"";position:absolute;inset:17%;border-radius:50%;border:2px solid #89939a;box-shadow:inset 0 0 0 7px #182630,inset 0 0 0 9px #b28a4c,0 0 25px #000}
+#wv-intro .wv-hub{position:absolute;z-index:4;left:50%;top:50%;width:29%;aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle at 35% 30%,#d5c29a,#596875 22%,#172733 48%,#050b11 70%);border:5px solid #b18d55;box-shadow:0 0 0 8px #17232d,0 0 0 10px #b18d5577,inset 0 0 20px #000}
+#wv-intro .wv-hub:before{content:"";position:absolute;inset:17%;border:2px solid #d7bd86;border-radius:50%;box-shadow:inset 0 0 12px #000}
+#wv-intro .wv-handle{position:absolute;z-index:5;left:50%;top:50%;width:42%;height:9px;transform:translate(-50%,-50%);border-radius:9px;background:linear-gradient(#e5d2a7,#876a3e 48%,#33291c);box-shadow:0 3px 8px #000}
+#wv-intro .wv-handle:before,#wv-intro .wv-handle:after{content:"";position:absolute;top:50%;width:23px;height:23px;transform:translateY(-50%);border-radius:50%;background:radial-gradient(circle at 35% 30%,#f2dfb5,#927345 55%,#302719);border:2px solid #d2b77e}
+#wv-intro .wv-handle:before{left:-9px}#wv-intro .wv-handle:after{right:-9px}
+#wv-intro .wv-bolts{position:absolute;inset:0;z-index:4;pointer-events:none}
+#wv-intro .wv-bolt{position:absolute;left:50%;top:50%;width:13px;height:13px;margin:-6.5px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#f4e3bd,#9b8359 45%,#26323b 75%);border:1px solid #d6bb85;box-shadow:0 2px 4px #000}
+#wv-intro .wv-hinge{position:absolute;z-index:4;left:1%;top:28%;width:22px;height:44%;border-radius:8px;background:linear-gradient(90deg,#101a22,#a28a60 45%,#26333d);box-shadow:0 0 8px #000}
+#wv-intro .wv-status{position:absolute;bottom:clamp(24px,7vh,58px);left:0;right:0;text-align:center;z-index:8;color:#d4c19b;font:600 10px ui-monospace,monospace;letter-spacing:.22em;text-transform:uppercase}
+#wv-intro .wv-status:after{content:"";display:block;width:90px;height:2px;margin:13px auto 0;background:linear-gradient(90deg,transparent,#c69b58,transparent);animation:wv-scan 1.4s ease-in-out infinite}
+#wv-intro .wv-door{animation:wv-unlock-door 7.8s cubic-bezier(.7,0,.2,1) both}
+#wv-intro .wv-hub{animation:wv-hub-turn 7.8s ease-in-out both}
+#wv-intro .wv-stage{animation:wv-camera 7.8s cubic-bezier(.6,0,.18,1) both}
+#wv-intro .wv-chamber{animation:wv-chamber-glow 7.8s ease both}
+@keyframes wv-unlock-door{0%,20%{transform:rotateY(0)}35%{transform:rotateY(0)}48%{transform:rotateY(-22deg)}65%,100%{transform:rotateY(-112deg)}}
+@keyframes wv-hub-turn{0%,18%{transform:translate(-50%,-50%) rotate(0)}37%{transform:translate(-50%,-50%) rotate(540deg)}49%,100%{transform:translate(-50%,-50%) rotate(540deg)}}
+@keyframes wv-camera{0%,55%{transform:scale(1) translateZ(0)}72%{transform:scale(1.45) translateZ(120px)}90%,100%{transform:scale(4.2) translateZ(500px)}}
+@keyframes wv-chamber-glow{0%,55%{filter:brightness(.65)}75%,100%{filter:brightness(1.8)}}
+@keyframes wv-scan{0%,100%{opacity:.35;transform:scaleX(.5)}50%{opacity:1;transform:scaleX(1.2)}}
+#wv-intro.wv-exit{animation:wv-fadeout .65s ease forwards;pointer-events:none}
+@keyframes wv-fadeout{to{opacity:0;visibility:hidden}}
+@media(max-width:600px){#wv-intro .wv-stage{width:min(88vw,500px)}#wv-intro .wv-intro-top{top:72px;font-size:9px}#wv-intro .wv-skip{top:16px;right:14px;padding:8px 12px}}
+@media(prefers-reduced-motion:reduce){#wv-intro{display:none!important}}
+
 </style>
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self' mailto:; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: https:; frame-src 'self' data: blob:; connect-src 'self'; upgrade-insecure-requests">
@@ -410,6 +451,21 @@
 
 </head>
 <body>
+
+<div id="wv-intro" aria-label="WebVault entrance animation">
+  <div class="wv-intro-top">WEBVAULT <span>SECURE ACCESS / ESTABLISHING CONNECTION</span></div>
+  <button class="wv-skip" type="button" aria-label="Skip entrance animation">Skip intro ↗</button>
+  <div class="wv-stage" aria-hidden="true">
+    <div class="wv-chamber"><div class="wv-tunnel"></div></div>
+    <div class="wv-door">
+      <div class="wv-bolts" id="wv-bolts"></div>
+      <div class="wv-hub"><div class="wv-handle"></div></div>
+      <div class="wv-hinge"></div>
+    </div>
+  </div>
+  <div class="wv-status" id="wv-status" aria-live="polite">Authenticating vault access</div>
+</div>
+
 <div class="progress-track"><span id="scroll-progress"></span></div>
 <a class="skip" href="#main">Skip to content</a>
 
@@ -810,7 +866,43 @@
       fitness:["Gym & Fitness","PULSE PERFORMANCE","TRAIN WITH PURPOSE","Move with<br>purpose.","Expert coaching, smart programming, and a community that keeps you moving forward.","Start your trial","#55a99a","#eaf3ef","#153d3a","Arial,sans-serif",["Strength lab","Group training","Memberships"],"https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1800&q=90"],
       legal:["Law & Professional","HARBOR LEGAL GROUP","COUNSEL THAT MOVES YOU FORWARD","Clarity when<br>it matters.","Practical counsel. Personal attention. A steady hand through complex decisions.","Schedule a consultation","#b18b55","#eff2f5","#1d334e","Georgia,serif",["Business law","Estate planning","Civil litigation"]]
     };
-    function demo(d){return '<!doctype html><html><head><meta name="viewport" content="width=device-width,initial-scale=1"><style>*{box-sizing:border-box}body{margin:0;background:'+d[7]+';color:'+d[8]+';font:16px Arial,sans-serif}header{height:72px;padding:0 7%;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid '+d[8]+'22;background:#fff}header b{font:700 17px '+d[9]+';letter-spacing:.05em}header span{font-size:10px;letter-spacing:.13em}main{padding:9vh 9%;min-height:480px;background:linear-gradient(90deg,'+d[8]+'ee 0%,'+d[8]+'99 48%,'+d[8]+'22 100%),url("'+d[11]+'") center/cover no-repeat;color:white}main p{color:#ffffffd9}main h1{color:#fff;text-shadow:0 2px 18px #0005}small{letter-spacing:.16em;font-size:10px;font-weight:bold}h1{font:clamp(44px,8vw,86px)/.98 '+d[9]+';letter-spacing:-.05em;max-width:760px;margin:24px 0}p{max-width:470px;line-height:1.7;color:'+d[8]+'bb}button{background:'+d[8]+';color:white;border:0;padding:15px 22px;border-radius:3px;font-weight:bold;margin-top:20px;cursor:pointer}.tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding:26px 9%}.tile{padding:22px 16px;background:white;border:1px solid '+d[8]+'18;min-height:100px}.tile b{display:block;font:20px '+d[9]+'}.tile small{display:block;margin-top:9px;color:'+d[6]+'}footer{padding:22px 9%;font-size:12px;border-top:1px solid '+d[8]+'22}@media(max-width:600px){.tiles{grid-template-columns:1fr}header span{display:none}}</style></head><body><header><b>'+d[1]+'</b><span>'+d[2]+'</span></header><main><small>'+d[2]+'</small><h1>'+d[3]+'</h1><p>'+d[4]+'</p><button onclick="document.getElementById(\'details\').scrollIntoView({behavior:\'smooth\'})">'+d[5]+' ↗</button></main><section class="tiles">'+d[10].map(function(x,i){return '<div class="tile"><small>0'+(i+1)+'</small><b>'+x+'</b></div>'}).join("")+'</section><footer id="details"><b>'+d[1]+'</b><p>Concept preview by WebVault. We’ll tailor the layout, photography, colors and content to your actual business.</p><button onclick="alert(\'Thanks for exploring! Contact WebVault to make it yours.\')">Make this my website</button></footer></body></html>';}
+    function demo(d){return '<!doctype html><html><head><meta name="viewport" content="width=device-width,initial-scale=1"><style>*{box-sizing:border-box}body{margin:0;background:'+d[7]+';color:'+d[8]+';font:16px Arial,sans-serif}header{height:72px;padding:0 7%;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid '+d[8]+'22;background:#fff}header b{font:700 17px '+d[9]+';letter-spacing:.05em}header span{font-size:10px;letter-spacing:.13em}main{padding:9vh 9%;min-height:480px;background:linear-gradient(90deg,'+d[8]+'ee 0%,'+d[8]+'99 48%,'+d[8]+'22 100%),url("'+d[11]+'") center/cover no-repeat;color:white}main p{color:#ffffffd9}main h1{color:#fff;text-shadow:0 2px 18px #0005}small{letter-spacing:.16em;font-size:10px;font-weight:bold}h1{font:clamp(44px,8vw,86px)/.98 '+d[9]+';letter-spacing:-.05em;max-width:760px;margin:24px 0}p{max-width:470px;line-height:1.7;color:'+d[8]+'bb}button{background:'+d[8]+';color:white;border:0;padding:15px 22px;border-radius:3px;font-weight:bold;margin-top:20px;cursor:pointer}.tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding:26px 9%}.tile{padding:22px 16px;background:white;border:1px solid '+d[8]+'18;min-height:100px}.tile b{display:block;font:20px '+d[9]+'}.tile small{display:block;margin-top:9px;color:'+d[6]+'}footer{padding:22px 9%;font-size:12px;border-top:1px solid '+d[8]+'22}@media(max-width:600px){.tiles{grid-template-columns:1fr}header span{display:none}}</style></head><body><header><b>'+d[1]+'</b><span>'+d[2]+'</span></header><main><small>'+d[2]+'</small><h1>'+d[3]+'</h1><p>'+d[4]+'</p><button onclick="document.getElementById(\'details\').scrollIntoView({behavior:\'smooth\'})">'+d[5]+' ↗</button></main><section class="tiles">'+d[10].map(function(x,i){return '<div class="tile"><small>0'+(i+1)+'</small><b>'+x+'</b></div>'}).join("")+'</section><footer id="details"><b>'+d[1]+'</b><p>Concept preview by WebVault. We’ll tailor the layout, photography, colors and content to your actual business.</p><button onclick="alert(\'Thanks for exploring! Contact WebVault to make it yours.\')">Make this my website</button></footer>
+<script>
+(function(){
+  var intro=document.getElementById("wv-intro");
+  if(!intro)return;
+  var key="webvaultIntroSeen";
+  var reduce=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var seen=false;
+  try{seen=sessionStorage.getItem(key)==="1";}catch(e){}
+  if(seen||reduce){intro.remove();return;}
+  document.body.style.overflow="hidden";
+  var bolts=document.getElementById("wv-bolts");
+  for(var i=0;i<12;i++){
+    var a=(i/12)*Math.PI*2;
+    var bolt=document.createElement("i");
+    bolt.className="wv-bolt";
+    bolt.style.left=(50+42*Math.cos(a))+"%";
+    bolt.style.top=(50+42*Math.sin(a))+"%";
+    bolts.appendChild(bolt);
+  }
+  var status=document.getElementById("wv-status");
+  var skip=intro.querySelector(".wv-skip");
+  var finished=false;
+  function finish(){
+    if(finished)return;finished=true;
+    try{sessionStorage.setItem(key,"1");}catch(e){}
+    document.body.style.overflow="";
+    intro.classList.add("wv-exit");
+    window.setTimeout(function(){intro.remove();},700);
+  }
+  skip.addEventListener("click",finish);
+  window.setTimeout(function(){if(status&&!finished)status.textContent="Vault open / welcome inside";},3900);
+  window.setTimeout(finish,7800);
+})();
+</script>
+
+</body></html>';}
     document.querySelectorAll("[data-demo]").forEach(function(b){b.addEventListener("click",function(){var d=data[b.dataset.demo];title.textContent="WEBVAULT / "+d[0].toUpperCase();var demoPages={restaurant:"restaurant",contractor:"contractor",salon:"salon",realestate:"realestate",shop:"shop",fitness:"fitness",legal:"legal"};frame.removeAttribute("srcdoc");frame.src="demos/"+demoPages[b.dataset.demo]+".html";modal.classList.add("active");document.body.style.overflow="hidden";close.focus();});});
     function hide(){modal.classList.remove("active");frame.removeAttribute("src");frame.srcdoc="";document.body.style.overflow="";}
     close.addEventListener("click",hide);modal.addEventListener("click",function(e){if(e.target===modal)hide();});document.addEventListener("keydown",function(e){if(e.key==="Escape"&&modal.classList.contains("active"))hide();});
