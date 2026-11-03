@@ -214,10 +214,9 @@
   .vault svg{position:relative;z-index:1}
   .vault .orbit-ring{transform-origin:200px 200px;animation:orbitSpin 18s linear infinite}
   .vault .orbit-ring.reverse{animation-direction:reverse;animation-duration:24s}
-  /* Keep the combination mechanism visibly moving independently of the 3D intro. */
-  .vault #ticks{transform-box:fill-box;transform-origin:center;animation:combo 9s ease-in-out infinite}
-  .vault #inner{transform-box:fill-box;transform-origin:center;animation:comboReverse 9s ease-in-out infinite}
-  @keyframes comboReverse{0%{transform:rotate(0)}18%{transform:rotate(-240deg)}36%{transform:rotate(130deg)}52%{transform:rotate(-90deg)}66%,100%{transform:rotate(0)}}
+  /* Rotate the complete vault combination plate, as in the original hero. */
+  .vault .dial-rotor{transform-box:fill-box;transform-origin:center;animation:combo 9s ease-in-out infinite}
+
   .vault .energy-arc{fill:none;stroke-linecap:round;filter:drop-shadow(0 0 5px #7ce7e0)}
   .vault .core{filter:drop-shadow(0 0 8px #c8964a66)}
   .vault .wv{filter:drop-shadow(0 0 9px #c8964a88)}
@@ -231,7 +230,7 @@
   @keyframes orbitSpin{to{transform:rotate(360deg)}}
   @keyframes coreBreathe{0%,100%{opacity:.45;transform:scale(.98)}50%{opacity:1;transform:scale(1.025)}}
   @keyframes statusPulse{0%,100%{opacity:.55;box-shadow:0 0 4px #7ce7e0}50%{opacity:1;box-shadow:0 0 15px #7ce7e0}}
-  @media(prefers-reduced-motion:reduce){.vault:before,.vault:after,.vault .orbit-ring,.vault-hud .hud-dot{animation:none!important}}
+  @media(prefers-reduced-motion:reduce){.vault:before,.vault:after,.vault .orbit-ring,.vault .dial-rotor,.vault-hud .hud-dot{animation:none!important}}
 
 
   /* Atmospheric animated vault backdrop */
@@ -522,6 +521,7 @@
             <circle cx="200" cy="200" r="180" stroke="#7ce7e0" stroke-opacity=".22" stroke-width="1.5" stroke-dasharray="1 18"/>
             <circle cx="200" cy="20" r="2.5" fill="#c8964a" filter="url(#softGlow)"/>
           </g>
+          <g class="dial-rotor">
           <circle cx="200" cy="200" r="190" fill="#14212E"/>
           <circle cx="200" cy="200" r="190" fill="none" stroke="#C8964A" stroke-width="3"/>
           <g id="ticks" stroke="#9FB0BF"></g>
@@ -530,8 +530,31 @@
           <circle class="core" cx="200" cy="200" r="62" fill="#14212E" stroke="#C8964A" stroke-width="4"/>
           <text class="wv" x="200" y="214" text-anchor="middle" font-family="Archivo,sans-serif" font-weight="900" font-size="40" fill="#C8964A" style="font-stretch:112%">WV</text>
           <path class="latch" d="M200 6 L214 34 L186 34 Z"/>
+          </g>
         </svg>
       </div><div class="vault-hud"><span><i class="hud-dot"></i> Vault system online</span><span>Encryption: AES-256</span></div><div class="gadget-strip"><span class="gadget"><b>01</b> Design engine</span><span class="gadget"><b>02</b> Live preview</span><span class="gadget"><b>03</b> Mobile first</span></div></div>
+    </div>
+  </section>
+
+  <!-- INTERACTIVE WEBSITE STYLES -->
+  <section id="work" class="portfolio" aria-labelledby="work-h">
+    <div class="wrap">
+      <div class="portfolio-head">
+        <div><p class="kicker">THE WEBVAULT SHOWCASE / 001—007</p>
+          <h2 id="work-h">Real businesses deserve thoughtful design.</h2>
+          <p class="section-lead">Explore seven sample website concepts across different industries. Each preview shows a possible direction—not a past client project—and can be tailored to your actual business.</p>
+        </div>
+        <div class="portfolio-count">07 CONCEPT PREVIEWS</div>
+      </div>
+      <div class="demo-grid">
+<article class="demo-card"><div class="demo-thumb" style="background-image:url(https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1000&q=85)"><div class="thumb-window"><div class="thumb-bar"><i></i><i></i><i></i></div><div class="thumb-content"><b style="color:#234538">SAGE & STONE</b><span>FARM TO TABLE</span><div class="thumb-blocks"><i style="background:#d6a35b"></i><i style="background:#234538"></i><i style="background:#dce4e9"></i></div></div></div></div><div class="demo-meta"><small>01 / FOOD & HOSPITALITY</small><h3>Restaurant & Café</h3><p>Menus, reservations and appetite-first visuals.</p><button class="demo-open" data-demo="restaurant">Explore live demo <span>↗</span></button><a class="demo-cta" href="#contact" data-demo-request="restaurant">Build a site like this <span>→</span></a></div></article>
+<article class="demo-card"><div class="demo-thumb" style="background-image:url(https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1000&q=85)"><div class="thumb-window"><div class="thumb-bar"><i></i><i></i><i></i></div><div class="thumb-content"><b style="color:#18344b">NORTHLINE BUILDERS</b><span>BUILT ON TRUST</span><div class="thumb-blocks"><i style="background:#45647a"></i><i style="background:#18344b"></i><i style="background:#dce4e9"></i></div></div></div></div><div class="demo-meta"><small>02 / HOME SERVICES</small><h3>Contractor & Construction</h3><p>Project galleries, service areas and quote requests.</p><button class="demo-open" data-demo="contractor">Explore live demo <span>↗</span></button><a class="demo-cta" href="#contact" data-demo-request="contractor">Build a site like this <span>→</span></a></div></article>
+<article class="demo-card"><div class="demo-thumb" style="background-image:url(https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=1000&q=85)"><div class="thumb-window"><div class="thumb-bar"><i></i><i></i><i></i></div><div class="thumb-content"><b style="color:#342a40">ATELIER SKIN STUDIO</b><span>YOUR MOMENT. YOUR GLOW.</span><div class="thumb-blocks"><i style="background:#8c7baf"></i><i style="background:#342a40"></i><i style="background:#dce4e9"></i></div></div></div></div><div class="demo-meta"><small>03 / BEAUTY & WELLNESS</small><h3>Salon & Beauty</h3><p>Elegant service menus, stylist profiles and booking calls.</p><button class="demo-open" data-demo="salon">Explore live demo <span>↗</span></button><a class="demo-cta" href="#contact" data-demo-request="salon">Build a site like this <span>→</span></a></div></article>
+<article class="demo-card"><div class="demo-thumb" style="background-image:url(https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1000&q=85)"><div class="thumb-window"><div class="thumb-bar"><i></i><i></i><i></i></div><div class="thumb-content"><b style="color:#183448">HOMESTEAD REALTY</b><span>FIND YOUR PLACE</span><div class="thumb-blocks"><i style="background:#b58a5b"></i><i style="background:#183448"></i><i style="background:#dce4e9"></i></div></div></div></div><div class="demo-meta"><small>04 / PROPERTY</small><h3>Real Estate</h3><p>Property discovery, featured listings and agent leads.</p><button class="demo-open" data-demo="realestate">Explore live demo <span>↗</span></button><a class="demo-cta" href="#contact" data-demo-request="realestate">Build a site like this <span>→</span></a></div></article>
+<article class="demo-card"><div class="demo-thumb" style="background-image:url(https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1000&q=85)"><div class="thumb-window"><div class="thumb-bar"><i></i><i></i><i></i></div><div class="thumb-content"><b style="color:#272727">FORM / OBJECT</b><span>LESS, BUT BETTER.</span><div class="thumb-blocks"><i style="background:#d5b46c"></i><i style="background:#272727"></i><i style="background:#dce4e9"></i></div></div></div></div><div class="demo-meta"><small>05 / RETAIL</small><h3>Luxury E-commerce</h3><p>Product storytelling, curated collections and storefronts.</p><button class="demo-open" data-demo="shop">Explore live demo <span>↗</span></button><a class="demo-cta" href="#contact" data-demo-request="shop">Build a site like this <span>→</span></a></div></article>
+<article class="demo-card"><div class="demo-thumb" style="background-image:url(https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1000&q=85)"><div class="thumb-window"><div class="thumb-bar"><i></i><i></i><i></i></div><div class="thumb-content"><b style="color:#174c49">PULSE PERFORMANCE</b><span>MOVE WITH PURPOSE.</span><div class="thumb-blocks"><i style="background:#60a99d"></i><i style="background:#174c49"></i><i style="background:#dce4e9"></i></div></div></div></div><div class="demo-meta"><small>06 / FITNESS</small><h3>Gym & Fitness</h3><p>Class schedules, memberships and high-energy branding.</p><button class="demo-open" data-demo="fitness">Explore live demo <span>↗</span></button><a class="demo-cta" href="#contact" data-demo-request="fitness">Build a site like this <span>→</span></a></div></article>
+<article class="demo-card"><div class="demo-thumb" style="background-image:url('assets/EB5F2E81-0652-4859-8624-7AD59B6F1760.png');background-size:cover;background-position:center"><div class="thumb-window"><div class="thumb-bar"><i></i><i></i><i></i></div><div class="thumb-content"><b style="color:#19324f">HARBOR LEGAL GROUP</b><span>CLARITY WHEN IT MATTERS.</span><div class="thumb-blocks"><i style="background:#7695b9"></i><i style="background:#19324f"></i><i style="background:#dce4e9"></i></div></div></div></div><div class="demo-meta"><small>07 / PROFESSIONAL</small><h3>Law & Professional</h3><p>Credible design, practice areas and consultation requests.</p><button class="demo-open" data-demo="legal">Explore live demo <span>↗</span></button><a class="demo-cta" href="#contact" data-demo-request="legal">Build a site like this <span>→</span></a></div></article>
+      </div>
     </div>
   </section>
 
@@ -580,27 +603,7 @@
     </div>
   </section>
 
-  <!-- INTERACTIVE WEBSITE STYLES -->
-  <section id="work" class="portfolio" aria-labelledby="work-h">
-    <div class="wrap">
-      <div class="portfolio-head">
-        <div><p class="kicker">THE WEBVAULT SHOWCASE / 001—007</p>
-          <h2 id="work-h">Real businesses deserve thoughtful design.</h2>
-          <p class="section-lead">Explore seven sample website concepts across different industries. Each preview shows a possible direction—not a past client project—and can be tailored to your actual business.</p>
-        </div>
-        <div class="portfolio-count">07 CONCEPT PREVIEWS</div>
-      </div>
-      <div class="demo-grid">
-<article class="demo-card"><div class="demo-thumb" style="background-image:url(https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1000&q=85)"><div class="thumb-window"><div class="thumb-bar"><i></i><i></i><i></i></div><div class="thumb-content"><b style="color:#234538">SAGE & STONE</b><span>FARM TO TABLE</span><div class="thumb-blocks"><i style="background:#d6a35b"></i><i style="background:#234538"></i><i style="background:#dce4e9"></i></div></div></div></div><div class="demo-meta"><small>01 / FOOD & HOSPITALITY</small><h3>Restaurant & Café</h3><p>Menus, reservations and appetite-first visuals.</p><button class="demo-open" data-demo="restaurant">Explore live demo <span>↗</span></button><a class="demo-cta" href="#contact" data-demo-request="restaurant">Build a site like this <span>→</span></a></div></article>
-<article class="demo-card"><div class="demo-thumb" style="background-image:url(https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1000&q=85)"><div class="thumb-window"><div class="thumb-bar"><i></i><i></i><i></i></div><div class="thumb-content"><b style="color:#18344b">NORTHLINE BUILDERS</b><span>BUILT ON TRUST</span><div class="thumb-blocks"><i style="background:#45647a"></i><i style="background:#18344b"></i><i style="background:#dce4e9"></i></div></div></div></div><div class="demo-meta"><small>02 / HOME SERVICES</small><h3>Contractor & Construction</h3><p>Project galleries, service areas and quote requests.</p><button class="demo-open" data-demo="contractor">Explore live demo <span>↗</span></button><a class="demo-cta" href="#contact" data-demo-request="contractor">Build a site like this <span>→</span></a></div></article>
-<article class="demo-card"><div class="demo-thumb" style="background-image:url(https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=1000&q=85)"><div class="thumb-window"><div class="thumb-bar"><i></i><i></i><i></i></div><div class="thumb-content"><b style="color:#342a40">ATELIER SKIN STUDIO</b><span>YOUR MOMENT. YOUR GLOW.</span><div class="thumb-blocks"><i style="background:#8c7baf"></i><i style="background:#342a40"></i><i style="background:#dce4e9"></i></div></div></div></div><div class="demo-meta"><small>03 / BEAUTY & WELLNESS</small><h3>Salon & Beauty</h3><p>Elegant service menus, stylist profiles and booking calls.</p><button class="demo-open" data-demo="salon">Explore live demo <span>↗</span></button><a class="demo-cta" href="#contact" data-demo-request="salon">Build a site like this <span>→</span></a></div></article>
-<article class="demo-card"><div class="demo-thumb" style="background-image:url(https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1000&q=85)"><div class="thumb-window"><div class="thumb-bar"><i></i><i></i><i></i></div><div class="thumb-content"><b style="color:#183448">HOMESTEAD REALTY</b><span>FIND YOUR PLACE</span><div class="thumb-blocks"><i style="background:#b58a5b"></i><i style="background:#183448"></i><i style="background:#dce4e9"></i></div></div></div></div><div class="demo-meta"><small>04 / PROPERTY</small><h3>Real Estate</h3><p>Property discovery, featured listings and agent leads.</p><button class="demo-open" data-demo="realestate">Explore live demo <span>↗</span></button><a class="demo-cta" href="#contact" data-demo-request="realestate">Build a site like this <span>→</span></a></div></article>
-<article class="demo-card"><div class="demo-thumb" style="background-image:url(https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1000&q=85)"><div class="thumb-window"><div class="thumb-bar"><i></i><i></i><i></i></div><div class="thumb-content"><b style="color:#272727">FORM / OBJECT</b><span>LESS, BUT BETTER.</span><div class="thumb-blocks"><i style="background:#d5b46c"></i><i style="background:#272727"></i><i style="background:#dce4e9"></i></div></div></div></div><div class="demo-meta"><small>05 / RETAIL</small><h3>Luxury E-commerce</h3><p>Product storytelling, curated collections and storefronts.</p><button class="demo-open" data-demo="shop">Explore live demo <span>↗</span></button><a class="demo-cta" href="#contact" data-demo-request="shop">Build a site like this <span>→</span></a></div></article>
-<article class="demo-card"><div class="demo-thumb" style="background-image:url(https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1000&q=85)"><div class="thumb-window"><div class="thumb-bar"><i></i><i></i><i></i></div><div class="thumb-content"><b style="color:#174c49">PULSE PERFORMANCE</b><span>MOVE WITH PURPOSE.</span><div class="thumb-blocks"><i style="background:#60a99d"></i><i style="background:#174c49"></i><i style="background:#dce4e9"></i></div></div></div></div><div class="demo-meta"><small>06 / FITNESS</small><h3>Gym & Fitness</h3><p>Class schedules, memberships and high-energy branding.</p><button class="demo-open" data-demo="fitness">Explore live demo <span>↗</span></button><a class="demo-cta" href="#contact" data-demo-request="fitness">Build a site like this <span>→</span></a></div></article>
-<article class="demo-card"><div class="demo-thumb" style="background-image:url('assets/EB5F2E81-0652-4859-8624-7AD59B6F1760.png');background-size:cover;background-position:center"><div class="thumb-window"><div class="thumb-bar"><i></i><i></i><i></i></div><div class="thumb-content"><b style="color:#19324f">HARBOR LEGAL GROUP</b><span>CLARITY WHEN IT MATTERS.</span><div class="thumb-blocks"><i style="background:#7695b9"></i><i style="background:#19324f"></i><i style="background:#dce4e9"></i></div></div></div></div><div class="demo-meta"><small>07 / PROFESSIONAL</small><h3>Law & Professional</h3><p>Credible design, practice areas and consultation requests.</p><button class="demo-open" data-demo="legal">Explore live demo <span>↗</span></button><a class="demo-cta" href="#contact" data-demo-request="legal">Build a site like this <span>→</span></a></div></article>
-      </div>
-    </div>
-  </section>
+
 
   <!-- NATIONWIDE WEBSITE DESIGN FAQ -->
   <section id="faq" aria-labelledby="faq-h">
