@@ -713,7 +713,7 @@
 (async function(){
   const intro=document.getElementById("wv-intro");
   if(!intro)return;
-  const key="webvaultIntroSeen";
+  const key="webvault3DIntroSeen";
   const reduce=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   let seen=false;
   try{seen=sessionStorage.getItem(key)==="1";}catch(e){}
