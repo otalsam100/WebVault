@@ -392,44 +392,21 @@
   @media(max-width:760px){.assistant-shell{grid-template-columns:1fr}.style-assistant{padding:58px 0}}
 
 
-/* Cinematic WebVault entrance */
-#wv-intro{position:fixed;inset:0;z-index:9999;display:grid;place-items:center;overflow:hidden;background:radial-gradient(ellipse at 50% 45%,#263b4c 0%,#101d29 48%,#050b11 100%);color:#f7f4ee;perspective:1200px;isolation:isolate}
+
+/* Real-time Three.js cinematic vault entrance */
+#wv-intro{position:fixed;inset:0;z-index:9999;overflow:hidden;background:#050b11;color:#f6f0e5;isolation:isolate}
 #wv-intro[hidden]{display:none}
-#wv-intro:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent 0 3px,#ffffff06 4px),radial-gradient(ellipse at center,transparent 30%,#02060bc9 100%);pointer-events:none;z-index:5}
-#wv-intro .wv-intro-top{position:absolute;top:clamp(20px,5vh,48px);left:0;right:0;text-align:center;z-index:8;font:700 11px/1.4 ui-monospace,monospace;letter-spacing:.28em;color:#d6c19a}
-#wv-intro .wv-intro-top span{display:block;margin-top:8px;color:#9eafbc;font-size:9px;letter-spacing:.2em}
-#wv-intro .wv-skip{position:absolute;right:24px;top:22px;z-index:10;border:1px solid #d4bd8a77;border-radius:999px;background:#101d29b8;color:#f7f4ee;padding:10px 16px;font:600 12px "Instrument Sans",sans-serif;cursor:pointer;backdrop-filter:blur(8px)}
-#wv-intro .wv-stage{position:relative;width:min(76vw,620px);aspect-ratio:1;transform-style:preserve-3d;transform:translateZ(0);z-index:2}
-#wv-intro .wv-chamber{position:absolute;inset:5%;border-radius:50%;background:radial-gradient(circle,#e8c98b 0%,#8d744f 2%,#1a2935 15%,#0b141d 56%,#03070c 72%);box-shadow:0 0 0 12px #111c27,0 0 0 15px #b28a4c66,0 0 90px #d4a95d44,inset 0 0 55px #000;overflow:hidden}
-#wv-intro .wv-chamber:before{content:"";position:absolute;inset:8%;border:2px solid #c6a66c88;border-radius:50%;box-shadow:0 0 0 14px #0a1119,0 0 0 16px #b28a4c55,0 0 0 31px #0a1119,0 0 0 33px #b28a4c33}
-#wv-intro .wv-tunnel{position:absolute;left:50%;top:50%;width:42%;height:42%;border-radius:50%;transform:translate(-50%,-50%);background:radial-gradient(circle,#f9e4b7 0%,#b58b4d 9%,#273d4b 22%,#101c27 54%,#03070b 72%);box-shadow:0 0 38px #d7b16a77,inset 0 0 30px #000}
-#wv-intro .wv-tunnel:before,#wv-intro .wv-tunnel:after{content:"";position:absolute;inset:12%;border:2px solid #c9a76b88;border-radius:50%;box-shadow:0 0 0 10px #101d28,0 0 0 12px #b28a4c66}
-#wv-intro .wv-tunnel:after{inset:29%;border-color:#f0d7a5;box-shadow:0 0 24px #f4d9a1,inset 0 0 20px #e9c77d}
-#wv-intro .wv-door{position:absolute;inset:0;border-radius:50%;transform-origin:9% 50%;transform-style:preserve-3d;background:radial-gradient(circle at 38% 32%,#83909a 0%,#4d5b66 13%,#273642 31%,#111e29 54%,#070e15 68%,#3d4b55 73%,#101a23 78%,#59636b 82%,#17232d 88%,#0a1118 100%);border:12px solid #17232d;box-shadow:inset 0 0 0 5px #9b8359,inset 0 0 0 11px #27333c,inset 0 0 35px #000,0 20px 45px #000b;z-index:3;backface-visibility:visible}
-#wv-intro .wv-door:before{content:"";position:absolute;inset:7%;border-radius:50%;border:3px solid #c7a56c;box-shadow:0 0 0 7px #182630,0 0 0 9px #8d744f,inset 0 0 25px #000}
-#wv-intro .wv-door:after{content:"";position:absolute;inset:17%;border-radius:50%;border:2px solid #89939a;box-shadow:inset 0 0 0 7px #182630,inset 0 0 0 9px #b28a4c,0 0 25px #000}
-#wv-intro .wv-hub{position:absolute;z-index:4;left:50%;top:50%;width:29%;aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle at 35% 30%,#d5c29a,#596875 22%,#172733 48%,#050b11 70%);border:5px solid #b18d55;box-shadow:0 0 0 8px #17232d,0 0 0 10px #b18d5577,inset 0 0 20px #000}
-#wv-intro .wv-hub:before{content:"";position:absolute;inset:17%;border:2px solid #d7bd86;border-radius:50%;box-shadow:inset 0 0 12px #000}
-#wv-intro .wv-handle{position:absolute;z-index:5;left:50%;top:50%;width:42%;height:9px;transform:translate(-50%,-50%);border-radius:9px;background:linear-gradient(#e5d2a7,#876a3e 48%,#33291c);box-shadow:0 3px 8px #000}
-#wv-intro .wv-handle:before,#wv-intro .wv-handle:after{content:"";position:absolute;top:50%;width:23px;height:23px;transform:translateY(-50%);border-radius:50%;background:radial-gradient(circle at 35% 30%,#f2dfb5,#927345 55%,#302719);border:2px solid #d2b77e}
-#wv-intro .wv-handle:before{left:-9px}#wv-intro .wv-handle:after{right:-9px}
-#wv-intro .wv-bolts{position:absolute;inset:0;z-index:4;pointer-events:none}
-#wv-intro .wv-bolt{position:absolute;left:50%;top:50%;width:13px;height:13px;margin:-6.5px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#f4e3bd,#9b8359 45%,#26323b 75%);border:1px solid #d6bb85;box-shadow:0 2px 4px #000}
-#wv-intro .wv-hinge{position:absolute;z-index:4;left:1%;top:28%;width:22px;height:44%;border-radius:8px;background:linear-gradient(90deg,#101a22,#a28a60 45%,#26333d);box-shadow:0 0 8px #000}
-#wv-intro .wv-status{position:absolute;bottom:clamp(24px,7vh,58px);left:0;right:0;text-align:center;z-index:8;color:#d4c19b;font:600 10px ui-monospace,monospace;letter-spacing:.22em;text-transform:uppercase}
+#wv-intro canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+#wv-intro:after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at center,transparent 35%,#02060bc9 100%),linear-gradient(180deg,#02060b55,transparent 24%,transparent 75%,#02060b88);z-index:2}
+#wv-intro .wv-intro-top{position:absolute;top:clamp(22px,5vh,48px);left:0;right:0;text-align:center;z-index:4;font:700 11px/1.4 ui-monospace,monospace;letter-spacing:.28em;color:#ddc79d;text-shadow:0 2px 14px #000}
+#wv-intro .wv-intro-top span{display:block;margin-top:8px;color:#a9b6c0;font-size:9px;letter-spacing:.2em}
+#wv-intro .wv-skip{position:absolute;right:24px;top:22px;z-index:5;border:1px solid #d4bd8a77;border-radius:999px;background:#101d29b8;color:#f7f4ee;padding:10px 16px;font:600 12px "Instrument Sans",sans-serif;cursor:pointer;backdrop-filter:blur(8px)}
+#wv-intro .wv-status{position:absolute;bottom:clamp(24px,7vh,58px);left:0;right:0;text-align:center;z-index:4;color:#d4c19b;font:600 10px ui-monospace,monospace;letter-spacing:.22em;text-transform:uppercase;text-shadow:0 2px 12px #000}
 #wv-intro .wv-status:after{content:"";display:block;width:90px;height:2px;margin:13px auto 0;background:linear-gradient(90deg,transparent,#c69b58,transparent);animation:wv-scan 1.4s ease-in-out infinite}
-#wv-intro .wv-door{animation:wv-unlock-door 7.8s cubic-bezier(.7,0,.2,1) both}
-#wv-intro .wv-hub{animation:wv-hub-turn 7.8s ease-in-out both}
-#wv-intro .wv-stage{animation:wv-camera 7.8s cubic-bezier(.6,0,.18,1) both}
-#wv-intro .wv-chamber{animation:wv-chamber-glow 7.8s ease both}
-@keyframes wv-unlock-door{0%,20%{transform:rotateY(0)}35%{transform:rotateY(0)}48%{transform:rotateY(-22deg)}65%,100%{transform:rotateY(-112deg)}}
-@keyframes wv-hub-turn{0%,18%{transform:translate(-50%,-50%) rotate(0)}37%{transform:translate(-50%,-50%) rotate(540deg)}49%,100%{transform:translate(-50%,-50%) rotate(540deg)}}
-@keyframes wv-camera{0%,55%{transform:scale(1) translateZ(0)}72%{transform:scale(1.45) translateZ(120px)}90%,100%{transform:scale(4.2) translateZ(500px)}}
-@keyframes wv-chamber-glow{0%,55%{filter:brightness(.65)}75%,100%{filter:brightness(1.8)}}
 @keyframes wv-scan{0%,100%{opacity:.35;transform:scaleX(.5)}50%{opacity:1;transform:scaleX(1.2)}}
-#wv-intro.wv-exit{animation:wv-fadeout .65s ease forwards;pointer-events:none}
+#wv-intro.wv-exit{animation:wv-fadeout .7s ease forwards;pointer-events:none}
 @keyframes wv-fadeout{to{opacity:0;visibility:hidden}}
-@media(max-width:600px){#wv-intro .wv-stage{width:min(88vw,500px)}#wv-intro .wv-intro-top{top:72px;font-size:9px}#wv-intro .wv-skip{top:16px;right:14px;padding:8px 12px}}
+@media(max-width:600px){#wv-intro .wv-intro-top{top:72px;font-size:9px}#wv-intro .wv-skip{top:16px;right:14px;padding:8px 12px}}
 @media(prefers-reduced-motion:reduce){#wv-intro{display:none!important}}
 
 </style>
@@ -452,17 +429,10 @@
 </head>
 <body>
 
-<div id="wv-intro" aria-label="WebVault entrance animation">
-  <div class="wv-intro-top">WEBVAULT <span>SECURE ACCESS / ESTABLISHING CONNECTION</span></div>
+<div id="wv-intro" aria-label="WebVault cinematic 3D vault entrance">
+  <div class="wv-intro-top">WEBVAULT <span>PRIVATE ACCESS / SECURE CONNECTION</span></div>
   <button class="wv-skip" type="button" aria-label="Skip entrance animation">Skip intro ↗</button>
-  <div class="wv-stage" aria-hidden="true">
-    <div class="wv-chamber"><div class="wv-tunnel"></div></div>
-    <div class="wv-door">
-      <div class="wv-bolts" id="wv-bolts"></div>
-      <div class="wv-hub"><div class="wv-handle"></div></div>
-      <div class="wv-hinge"></div>
-    </div>
-  </div>
+  <canvas id="wv-vault-canvas" aria-hidden="true"></canvas>
   <div class="wv-status" id="wv-status" aria-live="polite">Authenticating vault access</div>
 </div>
 
@@ -739,166 +709,184 @@
   </div>
 </footer>
 
-<script>
-  // ---- EDIT THIS LINE (also update the email and phone links in the Contact section) ----
-  var CONTACT_EMAIL = "omartalsam@gmail.com";
-  // ---------------------------------------------------------------------------------------
-
-  // Vault dial ticks
-  (function(){
-    var g = document.getElementById("ticks"), s = "";
-    for (var i = 0; i < 60; i++){
-      var major = i % 5 === 0, a = i * 6 * Math.PI / 180;
-      var r1 = major ? 150 : 158, r2 = 170;
-      var x1 = 200 + r1 * Math.sin(a), y1 = 200 - r1 * Math.cos(a);
-      var x2 = 200 + r2 * Math.sin(a), y2 = 200 - r2 * Math.cos(a);
-      s += '<line x1="'+x1.toFixed(1)+'" y1="'+y1.toFixed(1)+'" x2="'+x2.toFixed(1)+'" y2="'+y2.toFixed(1)+'" stroke-width="'+(major?3:1.5)+'"/>';
-    }
-    g.innerHTML = s;
-  })();
-
-  document.getElementById("yr").textContent = new Date().getFullYear();
-
-  // Animated, draggable vault dial
-  (function(){
-    var vault = document.querySelector(".vault");
-    var ticks = document.getElementById("ticks");
-    var inner = document.getElementById("inner");
-    var latch = document.querySelector(".latch");
-    var reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-    // notches on the inner ring
-    var n = "";
-    for (var i = 0; i < 12; i++){
-      var a = i * 30 * Math.PI / 180, r1 = 76, r2 = (i % 3 === 0) ? 98 : 88;
-      n += '<line x1="'+(200+r1*Math.sin(a)).toFixed(1)+'" y1="'+(200-r1*Math.cos(a)).toFixed(1)+
-           '" x2="'+(200+r2*Math.sin(a)).toFixed(1)+'" y2="'+(200-r2*Math.cos(a)).toFixed(1)+'"/>';
-    }
-    inner.innerHTML = n;
-
-    var angle = 0, raf = null, timer = null, userControl = false;
-
-    function render(){
-      ticks.setAttribute("transform", "rotate(" + angle + " 200 200)");
-      inner.setAttribute("transform", "rotate(" + (-angle * 0.6) + " 200 200)");
-      var m = ((angle % 30) + 30) % 30;           // clicks each time a major tick passes the marker
-      latch.classList.toggle("on", m < 2.5 || m > 27.5);
-    }
-    function ease(t){ return t < .5 ? 2*t*t : 1 - Math.pow(-2*t + 2, 2) / 2; }
-    function stop(){ cancelAnimationFrame(raf); clearTimeout(timer); }
-
-    // right, left, right, then settle and unlock
-    var moves = [ {to:240, ms:1500}, {to:-130, ms:1700}, {to:90, ms:1400}, {to:0, ms:1200} ];
-
-    function play(){
-      if (reduce || userControl) return;
-      vault.classList.remove("open");
-      var i = 0;
-      function next(){
-        if (userControl) return;
-        if (i >= moves.length){
-          vault.classList.add("open");
-          timer = setTimeout(play, 2800);
-          return;
-        }
-        var from = angle, mv = moves[i++], t0 = null;
-        function step(ts){
-          if (t0 === null) t0 = ts;
-          var p = Math.min((ts - t0) / mv.ms, 1);
-          angle = from + (mv.to - from) * ease(p);
-          render();
-          if (p < 1) raf = requestAnimationFrame(step);
-          else timer = setTimeout(next, 260);
-        }
-        raf = requestAnimationFrame(step);
-      }
-      next();
-    }
-
-    // drag to turn it yourself
-    var dragging = false, last = 0;
-    function pointerAngle(e){
-      var r = vault.getBoundingClientRect();
-      return Math.atan2(e.clientY - (r.top + r.height / 2), e.clientX - (r.left + r.width / 2)) * 180 / Math.PI;
-    }
-    vault.addEventListener("pointerdown", function(e){
-      stop(); userControl = true; dragging = true;
-      last = pointerAngle(e);
-      vault.classList.add("drag"); vault.classList.remove("open");
-      try { vault.setPointerCapture(e.pointerId); } catch(err){}
-    });
-    vault.addEventListener("pointermove", function(e){
-      if (!dragging) return;
-      var a = pointerAngle(e), d = a - last;
-      if (d > 180) d -= 360;
-      if (d < -180) d += 360;
-      angle += d; last = a; render();
-    });
-    function release(){
-      if (!dragging) return;
-      dragging = false;
-      vault.classList.remove("drag");
-      angle = ((angle % 360) + 360) % 360;
-      if (angle > 180) angle -= 360;
-      render();
-      timer = setTimeout(function(){ userControl = false; play(); }, 3500);
-    }
-    vault.addEventListener("pointerup", release);
-    vault.addEventListener("pointercancel", release);
-
-    render();
-    play();
-  })();
-
-
-  // Futuristic scroll telemetry and self-contained interactive website demos.
-  (function(){
-    var bar=document.getElementById("scroll-progress");
-    function progress(){var d=document.documentElement;bar.style.width=(d.scrollTop/Math.max(1,d.scrollHeight-d.clientHeight)*100)+"%";}
-    window.addEventListener("scroll",progress,{passive:true});progress();
-    var modal=document.getElementById("demo-modal"),frame=document.getElementById("demo-frame"),title=document.getElementById("demo-title"),close=document.getElementById("demo-close");
-    var data={
-      restaurant:["Restaurant & Café","SAGE & STONE","FARM TO TABLE • EST. 2018","Good food.<br>Good company.","Seasonal plates, thoughtful ingredients, and a table waiting for you.","Explore our menu","#b47b45","#f5efe5","#243f34","Georgia,serif",["Dinner menu","Weekend brunch","Private dining"],"https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1800&q=90"],
-      contractor:["Contractor & Construction","NORTHLINE BUILDERS","RESIDENTIAL • COMMERCIAL • REMODELING","Built right.<br>Built for life.","Craftsmanship you can see. Communication you can count on. From first sketch to final walkthrough.","Request an estimate","#d18b42","#edf2f5","#183247","Arial,sans-serif",["New construction","Kitchen & bath","Renovations"],"https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1800&q=90"],
-      salon:["Salon & Beauty","ATELIER SKIN STUDIO","BEAUTY, WITH INTENTION","Your moment.<br>Your glow.","A considered approach to skin, hair and the rituals that make you feel like yourself.","Book your appointment","#a68bbd","#f5f0f7","#342a40","Georgia,serif",["Signature facial","Color & styling","Beauty rituals"],"https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=1800&q=90"],
-      realestate:["Real Estate","HOMESTEAD REALTY","FIND YOUR PLACE IN THE WORLD","A better way<br>to come home.","Local insight, thoughtful guidance, and the right home for the next chapter.","Explore properties","#b68b5c","#f2f0e9","#233c4a","Georgia,serif",["Featured homes","Buy with us","Sell with confidence"],"https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1800&q=90"],
-      shop:["Luxury E-commerce","FORM / OBJECT","OBJECTS FOR EVERYDAY LIVING","Less, but<br>better.","Considered essentials. Honest materials. Designed to stay with you.","Shop the collection","#c7a65f","#f4f1e9","#171717","Georgia,serif",["New arrivals","The essentials","Our philosophy"],"https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1800&q=90"],
-      fitness:["Gym & Fitness","PULSE PERFORMANCE","TRAIN WITH PURPOSE","Move with<br>purpose.","Expert coaching, smart programming, and a community that keeps you moving forward.","Start your trial","#55a99a","#eaf3ef","#153d3a","Arial,sans-serif",["Strength lab","Group training","Memberships"],"https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1800&q=90"],
-      legal:["Law & Professional","HARBOR LEGAL GROUP","COUNSEL THAT MOVES YOU FORWARD","Clarity when<br>it matters.","Practical counsel. Personal attention. A steady hand through complex decisions.","Schedule a consultation","#b18b55","#eff2f5","#1d334e","Georgia,serif",["Business law","Estate planning","Civil litigation"]]
-    };
-    function demo(d){return '<!doctype html><html><head><meta name="viewport" content="width=device-width,initial-scale=1"><style>*{box-sizing:border-box}body{margin:0;background:'+d[7]+';color:'+d[8]+';font:16px Arial,sans-serif}header{height:72px;padding:0 7%;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid '+d[8]+'22;background:#fff}header b{font:700 17px '+d[9]+';letter-spacing:.05em}header span{font-size:10px;letter-spacing:.13em}main{padding:9vh 9%;min-height:480px;background:linear-gradient(90deg,'+d[8]+'ee 0%,'+d[8]+'99 48%,'+d[8]+'22 100%),url("'+d[11]+'") center/cover no-repeat;color:white}main p{color:#ffffffd9}main h1{color:#fff;text-shadow:0 2px 18px #0005}small{letter-spacing:.16em;font-size:10px;font-weight:bold}h1{font:clamp(44px,8vw,86px)/.98 '+d[9]+';letter-spacing:-.05em;max-width:760px;margin:24px 0}p{max-width:470px;line-height:1.7;color:'+d[8]+'bb}button{background:'+d[8]+';color:white;border:0;padding:15px 22px;border-radius:3px;font-weight:bold;margin-top:20px;cursor:pointer}.tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding:26px 9%}.tile{padding:22px 16px;background:white;border:1px solid '+d[8]+'18;min-height:100px}.tile b{display:block;font:20px '+d[9]+'}.tile small{display:block;margin-top:9px;color:'+d[6]+'}footer{padding:22px 9%;font-size:12px;border-top:1px solid '+d[8]+'22}@media(max-width:600px){.tiles{grid-template-columns:1fr}header span{display:none}}</style></head><body><header><b>'+d[1]+'</b><span>'+d[2]+'</span></header><main><small>'+d[2]+'</small><h1>'+d[3]+'</h1><p>'+d[4]+'</p><button onclick="document.getElementById(\'details\').scrollIntoView({behavior:\'smooth\'})">'+d[5]+' ↗</button></main><section class="tiles">'+d[10].map(function(x,i){return '<div class="tile"><small>0'+(i+1)+'</small><b>'+x+'</b></div>'}).join("")+'</section><footer id="details"><b>'+d[1]+'</b><p>Concept preview by WebVault. We’ll tailor the layout, photography, colors and content to your actual business.</p><button onclick="alert(\'Thanks for exploring! Contact WebVault to make it yours.\')">Make this my website</button></footer>
-<script>
-(function(){
-  var intro=document.getElementById("wv-intro");
+<script type="module">
+(async function(){
+  const intro=document.getElementById("wv-intro");
   if(!intro)return;
-  var key="webvaultIntroSeen";
-  var reduce=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var seen=false;
+  const key="webvaultIntroSeen";
+  const reduce=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let seen=false;
   try{seen=sessionStorage.getItem(key)==="1";}catch(e){}
   if(seen||reduce){intro.remove();return;}
   document.body.style.overflow="hidden";
-  var bolts=document.getElementById("wv-bolts");
-  for(var i=0;i<12;i++){
-    var a=(i/12)*Math.PI*2;
-    var bolt=document.createElement("i");
-    bolt.className="wv-bolt";
-    bolt.style.left=(50+42*Math.cos(a))+"%";
-    bolt.style.top=(50+42*Math.sin(a))+"%";
-    bolts.appendChild(bolt);
-  }
-  var status=document.getElementById("wv-status");
-  var skip=intro.querySelector(".wv-skip");
-  var finished=false;
+  const status=document.getElementById("wv-status");
+  const skip=intro.querySelector(".wv-skip");
+  let finished=false,raf=0;
   function finish(){
     if(finished)return;finished=true;
     try{sessionStorage.setItem(key,"1");}catch(e){}
     document.body.style.overflow="";
     intro.classList.add("wv-exit");
-    window.setTimeout(function(){intro.remove();},700);
+    window.setTimeout(()=>intro.remove(),750);
   }
   skip.addEventListener("click",finish);
-  window.setTimeout(function(){if(status&&!finished)status.textContent="Vault open / welcome inside";},3900);
-  window.setTimeout(finish,7800);
+  try{
+    const THREE=await import("https://cdn.jsdelivr.net/npm/three@0.160.1/build/three.module.js");
+    if(finished)return;
+    const canvas=document.getElementById("wv-vault-canvas");
+    const renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:false,powerPreference:"high-performance"});
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,1.7));
+    renderer.setSize(window.innerWidth,window.innerHeight);
+    renderer.shadowMap.enabled=true;
+    renderer.shadowMap.type=THREE.PCFSoftShadowMap;
+    renderer.outputColorSpace=THREE.SRGBColorSpace;
+    renderer.toneMapping=THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure=1.12;
+    const scene=new THREE.Scene();
+    scene.background=new THREE.Color(0x050b11);
+    scene.fog=new THREE.FogExp2(0x07111a,.035);
+    const camera=new THREE.PerspectiveCamera(39,window.innerWidth/window.innerHeight,.1,100);
+    camera.position.set(0,.12,10.8);
+    camera.lookAt(0,0,0);
+    scene.add(new THREE.HemisphereLight(0x9db4c7,0x17100a,1.25));
+    const keyLight=new THREE.SpotLight(0xffdfad,170,35,Math.PI/5,.5,1.4);
+    keyLight.position.set(-4,6,7);keyLight.castShadow=true;keyLight.shadow.mapSize.set(1024,1024);scene.add(keyLight);
+    const coolLight=new THREE.PointLight(0x7bafc4,35,22);coolLight.position.set(5,1,5);scene.add(coolLight);
+    const innerLight=new THREE.PointLight(0xffd28b,0,18);innerLight.position.set(0,0,-5);scene.add(innerLight);
+    const steel=new THREE.MeshStandardMaterial({color:0x35434d,metalness:.94,roughness:.28});
+    const darkSteel=new THREE.MeshStandardMaterial({color:0x111c25,metalness:.9,roughness:.34});
+    const brushed=new THREE.MeshStandardMaterial({color:0x68747a,metalness:.96,roughness:.23});
+    const brass=new THREE.MeshStandardMaterial({color:0xb28a4d,metalness:.88,roughness:.25});
+    const goldBright=new THREE.MeshStandardMaterial({color:0xe1c58c,metalness:.82,roughness:.2,emissive:0x3b260d});
+    const black=new THREE.MeshStandardMaterial({color:0x050a0f,metalness:.45,roughness:.5});
+    const wallMat=new THREE.MeshStandardMaterial({color:0x101c25,metalness:.7,roughness:.55,side:THREE.DoubleSide});
+    function cylinder(parent,r1,r2,depth,mat,z,segments=96){
+      const m=new THREE.Mesh(new THREE.CylinderGeometry(r1,r2,depth,segments),mat);
+      m.rotation.x=Math.PI/2;m.position.z=z;m.castShadow=true;m.receiveShadow=true;parent.add(m);return m;
+    }
+    function torus(parent,r,t,mat,z){
+      const m=new THREE.Mesh(new THREE.TorusGeometry(r,t,14,120),mat);m.position.z=z;m.castShadow=true;parent.add(m);return m;
+    }
+    // Deep armored aperture and illuminated passage behind the door.
+    const passage=new THREE.Group();passage.position.z=-3.8;scene.add(passage);
+    const tunnel=new THREE.Mesh(new THREE.CylinderGeometry(3.15,3.15,8,96,1,true),wallMat);
+    tunnel.rotation.x=Math.PI/2;tunnel.position.z=-1.2;tunnel.receiveShadow=true;passage.add(tunnel);
+    for(let j=0;j<5;j++){
+      const ring=torus(passage,2.75,.095,j%2?brass:steel,-.2-j*1.35);
+      ring.scale.set(1,1,1);
+    }
+    const farGlow=new THREE.Mesh(new THREE.CircleGeometry(2.3,96),new THREE.MeshBasicMaterial({color:0x9e8053}));
+    farGlow.position.z=-7.5;passage.add(farGlow);
+    const portalGlow=new THREE.PointLight(0xffc978,38,24);portalGlow.position.set(0,0,-6);passage.add(portalGlow);
+    // Heavy circular door frame fixed to the chamber.
+    const frame=new THREE.Group();scene.add(frame);
+    cylinder(frame,3.08,3.08,.48,darkSteel,-.05,128);
+    torus(frame,2.97,.16,brass,.24);
+    torus(frame,2.76,.075,brushed,.27);
+    torus(frame,2.54,.055,brass,.29);
+    // Radial frame bolts.
+    for(let i=0;i<32;i++){
+      const a=i*Math.PI*2/32;
+      const bolt=new THREE.Mesh(new THREE.CylinderGeometry(.055,.055,.07,12),goldBright);
+      bolt.rotation.x=Math.PI/2;bolt.position.set(Math.cos(a)*2.86,Math.sin(a)*2.86,.31);bolt.castShadow=true;frame.add(bolt);
+      const slot=new THREE.Mesh(new THREE.BoxGeometry(.045,.012,.008),darkSteel);
+      slot.position.set(bolt.position.x,bolt.position.y,.35);slot.rotation.z=a;frame.add(slot);
+    }
+    // Door rotates from a real hinge pivot, not a flat CSS illusion.
+    const hinge=new THREE.Group();hinge.position.set(-2.55,0,.5);scene.add(hinge);
+    const door=new THREE.Group();door.position.x=2.55;hinge.add(door);
+    cylinder(door,2.68,2.68,.42,steel,0,128);
+    cylinder(door,2.51,2.51,.10,brushed,.25,128);
+    torus(door,2.48,.105,darkSteel,.32);
+    torus(door,2.28,.055,brass,.36);
+    torus(door,1.98,.045,brushed,.38);
+    torus(door,1.55,.035,brass,.4);
+    // Concentric armored plate details.
+    for(let i=0;i<24;i++){
+      const a=i*Math.PI*2/24;
+      const bolt=new THREE.Mesh(new THREE.CylinderGeometry(.085,.085,.12,16),goldBright);
+      bolt.rotation.x=Math.PI/2;bolt.position.set(Math.cos(a)*2.12,Math.sin(a)*2.12,.43);bolt.castShadow=true;door.add(bolt);
+      const radial=new THREE.Mesh(new THREE.BoxGeometry(.055,.42,.025),darkSteel);
+      radial.position.set(Math.cos(a)*1.78,Math.sin(a)*1.78,.415);radial.rotation.z=a-Math.PI/2;door.add(radial);
+    }
+    // Central wheel, spokes and grip handles.
+    const hub=new THREE.Group();door.add(hub);
+    cylinder(hub,.83,.83,.2,darkSteel,.47,64);
+    torus(hub,.77,.065,goldBright,.59);
+    cylinder(hub,.61,.61,.12,brushed,.61,64);
+    torus(hub,.48,.035,brass,.69);
+    cylinder(hub,.31,.31,.16,steel,.72,48);
+    for(let i=0;i<8;i++){
+      const a=i*Math.PI/4;
+      const spoke=new THREE.Mesh(new THREE.BoxGeometry(.72,.075,.095),brass);
+      spoke.position.set(Math.cos(a)*.52,Math.sin(a)*.52,.73);spoke.rotation.z=a;spoke.castShadow=true;hub.add(spoke);
+      const grip=new THREE.Mesh(new THREE.CylinderGeometry(.075,.075,.52,20),brushed);
+      grip.position.set(Math.cos(a)*1.02,Math.sin(a)*1.02,.55);grip.rotation.z=a-Math.PI/2;grip.castShadow=true;hub.add(grip);
+      const end=new THREE.Mesh(new THREE.SphereGeometry(.09,16,12),goldBright);
+      end.position.set(Math.cos(a)*1.28,Math.sin(a)*1.28,.55);hub.add(end);
+    }
+    const center=new THREE.Mesh(new THREE.CylinderGeometry(.22,.22,.12,48),goldBright);
+    center.rotation.x=Math.PI/2;center.position.z=.82;hub.add(center);
+    // Side locking bars retract as the wheel turns.
+    const bolts=[];
+    for(let i=0;i<8;i++){
+      const a=i*Math.PI/4;
+      const group=new THREE.Group();group.position.set(Math.cos(a)*2.36,Math.sin(a)*2.36,.25);group.rotation.z=a;door.add(group);
+      const bar=new THREE.Mesh(new THREE.BoxGeometry(.5,.16,.19),brushed);bar.castShadow=true;group.add(bar);
+      const tip=new THREE.Mesh(new THREE.CylinderGeometry(.12,.12,.2,20),brass);tip.rotation.z=Math.PI/2;tip.position.x=.23;group.add(tip);
+      bolts.push({group,a});
+    }
+    // Heavy hinge knuckles and wall-mounted brackets.
+    for(let i=0;i<3;i++){
+      const y=-1.65+i*1.65;
+      const knuckle=new THREE.Mesh(new THREE.CylinderGeometry(.16,.16,.8,32),brass);
+      knuckle.position.set(-2.62,y,.3);knuckle.castShadow=true;scene.add(knuckle);
+      const bracket=new THREE.Mesh(new THREE.BoxGeometry(.4,.22,.42),darkSteel);
+      bracket.position.set(-2.82,y,.22);scene.add(bracket);
+    }
+    // Subtle industrial floor plane and reflection-catching plinth.
+    const floor=new THREE.Mesh(new THREE.PlaneGeometry(80,80),new THREE.MeshStandardMaterial({color:0x0a1219,metalness:.55,roughness:.42}));
+    floor.rotation.x=-Math.PI/2;floor.position.y=-3.25;floor.position.z=-2;floor.receiveShadow=true;scene.add(floor);
+    const clock=new THREE.Clock();
+    let start=null;
+    const duration=8.2;
+    const ease=t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;
+    function render(now){
+      if(finished)return;
+      if(start===null)start=now;
+      const t=Math.min((now-start)/1000/duration,1);
+      const p=ease(t);
+      // Turn the locking wheel first, retract bolts, then swing the heavy door.
+      const wheelP=Math.min(Math.max((t-.12)/.27,0),1);
+      hub.rotation.z=wheelP*Math.PI*3;
+      const boltP=Math.min(Math.max((t-.3)/.17,0),1);
+      bolts.forEach(b=>{b.group.position.x=2.36+boltP*.48;});
+      const openP=Math.min(Math.max((t-.43)/.26,0),1);
+      hinge.rotation.y=-openP*1.72;
+      // Dolly through the doorway and into the lit interior.
+      const travel=Math.min(Math.max((t-.56)/.44,0),1);
+      camera.position.z=10.8-travel*10.1;
+      camera.position.y=.12+Math.sin(t*2.5)*.035;
+      camera.fov=39+travel*9;camera.updateProjectionMatrix();
+      camera.lookAt(0,0,-travel*2.2);
+      innerLight.intensity=10+travel*45;
+      portalGlow.intensity=38+travel*24;
+      keyLight.intensity=170*(1-travel*.38);
+      renderer.render(scene,camera);
+      if(t>=.25&&t<.45)status.textContent="Unlocking the vault";
+      else if(t>=.45&&t<.68)status.textContent="Opening secure passage";
+      else if(t>=.68)status.textContent="Welcome inside WebVault";
+      if(t<1)raf=requestAnimationFrame(render);else window.setTimeout(finish,350);
+    }
+    function resize(){camera.aspect=window.innerWidth/window.innerHeight;camera.updateProjectionMatrix();renderer.setSize(window.innerWidth,window.innerHeight);}
+    window.addEventListener("resize",resize,{passive:true});
+    raf=requestAnimationFrame(render);
+  }catch(err){
+    console.warn("WebVault 3D intro unavailable; continuing to site.",err);
+    status.textContent="Welcome to WebVault";
+    window.setTimeout(finish,900);
+  }
+  window.setTimeout(()=>{if(!finished)finish();},11500);
 })();
 </script>
 
