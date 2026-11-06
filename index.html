@@ -894,7 +894,7 @@
     try{sessionStorage.setItem(key,"1");}catch(e){}
     document.body.style.overflow="";
     intro.classList.add("wv-exit");
-    window.setTimeout(()=>intro.remove(),320);
+    window.setTimeout(()=>intro.remove(),520);
   }
   skip.addEventListener("click",finish);
   try{
@@ -1090,14 +1090,18 @@
       const glow=new THREE.PointLight(0x24bfff,1.4,4);glow.position.set(0,0,.45);g.add(glow);
       return g;
     }
+    // A gallery of website concepts floats around one large WebVault homepage preview.
     const holograms=[
-      hologram(-3.1,1.15,-10.4,3.0,1.8,.13),
-      hologram(2.8,.2,-10.1,3.25,1.9,-.12),
-      hologram(.1,2.55,-12.7,2.5,1.45,0),
-      hologram(-1.5,-1.45,-11.8,2.15,1.15,.08),
-      hologram(1.85,-1.55,-13.2,2.0,1.12,-.08),
-      hologram(-3.7,-.8,-14.2,1.65,1.0,.16)
+      hologram(-4.1,1.45,-14.2,2.35,1.4,.18),
+      hologram(4.0,1.05,-14.5,2.5,1.48,-.18),
+      hologram(-3.8,-1.35,-15.2,2.15,1.25,.12),
+      hologram(3.65,-1.5,-15.4,2.2,1.3,-.12),
+      hologram(-1.9,2.65,-16.3,2.0,1.2,.08),
+      hologram(1.9,2.55,-16.5,2.0,1.2,-.08)
     ];
+    // This large, centered website preview is the destination for the final camera push-in.
+    const featuredWebsite=hologram(0,.05,-12.1,6.3,3.55,0);
+    featuredWebsite.scale.set(.92,.92,1);
     // Gold-lit central mechanism echoes the vault dial as the camera enters the hall.
     const revealDial=new THREE.Group();revealDial.position.set(.2,.45,-14.8);hall.add(revealDial);
     const revealRing=new THREE.Mesh(new THREE.TorusGeometry(1.05,.055,12,96),edgeGold);revealDial.add(revealRing);
@@ -1122,16 +1126,20 @@
       const openP=Math.min(Math.max((t-.24)/.2,0),1);
       hinge.rotation.y=-openP*1.72;
       // Accelerated camera move through the opening into the holographic command hall.
-      const travel=Math.min(Math.max((t-.27)/.73,0),1);
-      camera.position.z=10.8-travel*16.5;
-      camera.position.y=.12+Math.sin(t*3.2)*.045;
-      camera.fov=39+travel*13;camera.updateProjectionMatrix();
-      camera.lookAt(0,.05,-travel*8.8);
+      const travel=Math.min(Math.max((t-.27)/.53,0),1);
+      const zoom=Math.min(Math.max((t-.78)/.22,0),1);
+      const smoothZoom=zoom*zoom*(3-2*zoom);
+      // First reveal the floating template gallery, then push directly into the featured WebVault homepage.
+      camera.position.z=10.8-travel*16.0-smoothZoom*2.0;
+      camera.position.y=.12+Math.sin(t*3.2)*.035;
+      camera.fov=39+travel*7-smoothZoom*17;camera.updateProjectionMatrix();
+      camera.lookAt(0,.05,-travel*12.1);
+      featuredWebsite.scale.setScalar(.92+smoothZoom*.09);
       innerLight.intensity=10+travel*45;
       portalGlow.intensity=38+travel*24;
       keyLight.intensity=170*(1-travel*.62);
       holograms.forEach((panel,i)=>{panel.position.y+=Math.sin(now*.0015+i)*.0008;panel.rotation.z=Math.sin(now*.0007+i)*.012;});
-      revealDial.rotation.z=now*.00022;
+      revealDial.rotation.z=now*.00022;\n      featuredWebsite.rotation.y=Math.sin(now*.00035)*.008;
       renderer.render(scene,camera);
       if(t>=.12&&t<.34)status.textContent="Unlocking the vault";
       else if(t>=.27&&t<.72)status.textContent="Entering the WebVault interface";
