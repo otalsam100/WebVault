@@ -880,7 +880,7 @@
 (async function(){
   const intro=document.getElementById("wv-intro");
   if(!intro)return;
-  const key="webvault3DIntroSeen_v2";
+  const key="webvault3DIntroSeen_v3";
   const reduce=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   let seen=false;
   try{seen=sessionStorage.getItem(key)==="1";}catch(e){}
@@ -1111,7 +1111,7 @@
     const revealLight=new THREE.PointLight(0x39bdff,8,13);revealLight.position.set(0,0,1.4);hall.add(revealLight);
         const clock=new THREE.Clock();
     let start=null;
-    const duration=4.8;
+    const duration=6.4;
     const ease=t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;
     function render(now){
       if(finished)return;
@@ -1156,7 +1156,7 @@
     intro.classList.add("fallback-active");
     window.setTimeout(finish,4800);
   }
-  window.setTimeout(()=>{if(!finished)finish();},6500);
+  window.setTimeout(()=>{if(!finished)finish();},8200);
 })();
 </script>
 
@@ -1205,11 +1205,7 @@
   });
 })();
 </script>
-</body></html>';}
-    document.querySelectorAll("[data-demo]").forEach(function(b){b.addEventListener("click",function(){var d=data[b.dataset.demo];title.textContent="WEBVAULT / "+d[0].toUpperCase();var demoPages={restaurant:"restaurant",contractor:"contractor",salon:"salon",realestate:"realestate",shop:"shop",fitness:"fitness",legal:"legal"};frame.removeAttribute("srcdoc");frame.src="demos/"+demoPages[b.dataset.demo]+".html";modal.classList.add("active");document.body.style.overflow="hidden";close.focus();});});
-    function hide(){modal.classList.remove("active");frame.removeAttribute("src");frame.srcdoc="";document.body.style.overflow="";}
-    close.addEventListener("click",hide);modal.addEventListener("click",function(e){if(e.target===modal)hide();});document.addEventListener("keydown",function(e){if(e.key==="Escape"&&modal.classList.contains("active"))hide();});
-  })();
+
 
 
   // Guided WebVault style assistant: local recommendations, no external AI service.
