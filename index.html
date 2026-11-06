@@ -894,7 +894,7 @@
     try{sessionStorage.setItem(key,"1");}catch(e){}
     document.body.style.overflow="";
     intro.classList.add("wv-exit");
-    window.setTimeout(()=>intro.remove(),750);
+    window.setTimeout(()=>intro.remove(),320);
   }
   skip.addEventListener("click",finish);
   try{
@@ -1057,10 +1057,36 @@
       ring.position.set(w*.24,h*.12,.035);g.add(ring);
       const inner=new THREE.Mesh(new THREE.TorusGeometry(Math.min(w,h)*.12,.009,6,48),blueGlow);
       inner.position.copy(ring.position);inner.position.z=.04;g.add(inner);
-      for(let i=0;i<4;i++){
-        const line=new THREE.Mesh(new THREE.BoxGeometry(w*.22,.018,.01),blueGlow);
-        line.position.set(-w*.2,h*.27-i*.09,.03);g.add(line);
+      // Website-like interface: navigation, logo, hero copy, CTA, imagery and content cards.
+      const uiWhite=new THREE.MeshBasicMaterial({color:0xdaf3ff,transparent:true,opacity:.88,depthWrite:false});
+      const uiGold=new THREE.MeshBasicMaterial({color:0xe5bd76,transparent:true,opacity:.95,depthWrite:false});
+      const uiBlue=new THREE.MeshBasicMaterial({color:0x168fc3,transparent:true,opacity:.82,depthWrite:false});
+      const uiDark=new THREE.MeshBasicMaterial({color:0x071c2a,transparent:true,opacity:.66,depthWrite:false});
+      function slab(x,y,width,height,mat,z=.055){
+        const m=new THREE.Mesh(new THREE.PlaneGeometry(width,height),mat);
+        m.position.set(x,y,z);g.add(m);return m;
       }
+      // Thin site header with brand mark and navigation links.
+      slab(0,h*.39,w*.91,h*.105,uiDark,.052);
+      slab(-w*.39,h*.39,w*.075,h*.055,uiGold,.064);
+      for(let n=0;n<4;n++)slab(w*(.12+n*.105),h*.39,w*.065,h*.012,uiWhite,.066);
+      // Hero headline and subheading on the left; a featured visual on the right.
+      slab(-w*.19,h*.16,w*.48,h*.035,uiWhite,.065);
+      slab(-w*.16,h*.095,w*.4,h*.018,blueGlow,.065);
+      slab(-w*.12,h*.055,w*.32,h*.018,blueGlow,.065);
+      slab(-w*.32,-h*.17,w*.2,h*.07,uiGold,.068);
+      slab(w*.23,h*.08,w*.34,h*.29,uiBlue,.06);
+      const heroRing=new THREE.Mesh(new THREE.TorusGeometry(Math.min(w,h)*.095,.012,6,32),uiWhite);
+      heroRing.position.set(w*.23,h*.08,.075);g.add(heroRing);
+      // Three compact service/product cards along the bottom edge.
+      for(let n=0;n<3;n++){
+        const x=-w*.29+n*w*.29;
+        slab(x,-h*.34,w*.245,h*.16,uiDark,.058);
+        slab(x,-h*.30,w*.18,h*.012,uiWhite,.07);
+        slab(x,-h*.35,w*.14,h*.009,blueGlow,.07);
+      }
+      // A subtle gold accent line gives each hologram a polished website-preview finish.
+      slab(0,-h*.445,w*.9,.012,uiGold,.07);
       const glow=new THREE.PointLight(0x24bfff,1.4,4);glow.position.set(0,0,.45);g.add(glow);
       return g;
     }
@@ -1081,7 +1107,7 @@
     const revealLight=new THREE.PointLight(0x39bdff,8,13);revealLight.position.set(0,0,1.4);hall.add(revealLight);
         const clock=new THREE.Clock();
     let start=null;
-    const duration=5.8;
+    const duration=4.8;
     const ease=t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;
     function render(now){
       if(finished)return;
@@ -1096,7 +1122,7 @@
       const openP=Math.min(Math.max((t-.24)/.2,0),1);
       hinge.rotation.y=-openP*1.72;
       // Accelerated camera move through the opening into the holographic command hall.
-      const travel=Math.min(Math.max((t-.34)/.66,0),1);
+      const travel=Math.min(Math.max((t-.27)/.73,0),1);
       camera.position.z=10.8-travel*16.5;
       camera.position.y=.12+Math.sin(t*3.2)*.045;
       camera.fov=39+travel*13;camera.updateProjectionMatrix();
@@ -1108,9 +1134,9 @@
       revealDial.rotation.z=now*.00022;
       renderer.render(scene,camera);
       if(t>=.12&&t<.34)status.textContent="Unlocking the vault";
-      else if(t>=.34&&t<.72)status.textContent="Entering the WebVault interface";
+      else if(t>=.27&&t<.72)status.textContent="Entering the WebVault interface";
       else if(t>=.72)status.textContent="Welcome inside WebVault";
-      if(t<1)raf=requestAnimationFrame(render);else window.setTimeout(finish,350);
+      if(t<1)raf=requestAnimationFrame(render);else finish();
     }
     function resize(){camera.aspect=window.innerWidth/window.innerHeight;camera.updateProjectionMatrix();renderer.setSize(window.innerWidth,window.innerHeight);}
     window.addEventListener("resize",resize,{passive:true});
@@ -1119,9 +1145,9 @@
     console.warn("WebVault 3D intro unavailable; using animated fallback.",err);
     status.textContent="Opening secure passage";
     intro.classList.add("fallback-active");
-    window.setTimeout(finish,5800);
+    window.setTimeout(finish,4800);
   }
-  window.setTimeout(()=>{if(!finished)finish();},8200);
+  window.setTimeout(()=>{if(!finished)finish();},6500);
 })();
 </script>
 
