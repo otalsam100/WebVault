@@ -1139,7 +1139,8 @@
       portalGlow.intensity=38+travel*24;
       keyLight.intensity=170*(1-travel*.62);
       holograms.forEach((panel,i)=>{panel.position.y+=Math.sin(now*.0015+i)*.0008;panel.rotation.z=Math.sin(now*.0007+i)*.012;});
-      revealDial.rotation.z=now*.00022;\n      featuredWebsite.rotation.y=Math.sin(now*.00035)*.008;
+      revealDial.rotation.z=now*.00022;
+      featuredWebsite.rotation.y=Math.sin(now*.00035)*.008;
       renderer.render(scene,camera);
       if(t>=.12&&t<.34)status.textContent="Unlocking the vault";
       else if(t>=.27&&t<.72)status.textContent="Entering the WebVault interface";
