@@ -410,7 +410,7 @@
 #wv-intro .wv-status{position:absolute;bottom:clamp(24px,7vh,58px);left:0;right:0;text-align:center;z-index:4;color:#d4c19b;font:600 10px ui-monospace,monospace;letter-spacing:.22em;text-transform:uppercase;text-shadow:0 2px 12px #000}
 #wv-intro .wv-status:after{content:"";display:block;width:90px;height:2px;margin:13px auto 0;background:linear-gradient(90deg,transparent,#c69b58,transparent);animation:wv-scan 1.4s ease-in-out infinite}
 @keyframes wv-scan{0%,100%{opacity:.35;transform:scaleX(.5)}50%{opacity:1;transform:scaleX(1.2)}}
-#wv-intro.wv-exit{animation:wv-fadeout .7s ease forwards;pointer-events:none}
+#wv-intro.wv-exit{animation:wv-fadeout .35s cubic-bezier(.22,.61,.36,1) forwards;pointer-events:none}
 @keyframes wv-fadeout{to{opacity:0;visibility:hidden}}
 @media(max-width:600px){#wv-intro .wv-intro-top{top:72px;font-size:9px}#wv-intro .wv-skip{top:16px;right:14px;padding:8px 12px}}
 @media(prefers-reduced-motion:reduce){#wv-intro{display:none!important}}
@@ -894,7 +894,7 @@
     try{sessionStorage.setItem(key,"1");}catch(e){}
     document.body.style.overflow="";
     intro.classList.add("wv-exit");
-    window.setTimeout(()=>intro.remove(),520);
+    window.setTimeout(()=>intro.remove(),350);
   }
   skip.addEventListener("click",finish);
   try{
@@ -1102,49 +1102,47 @@
     // This large, centered website preview is the destination for the final camera push-in.
     const featuredWebsite=hologram(0,.05,-12.1,6.3,3.55,0);
     featuredWebsite.scale.set(.92,.92,1);
-    // Gold-lit central mechanism echoes the vault dial as the camera enters the hall.
-    const revealDial=new THREE.Group();revealDial.position.set(.2,.45,-14.8);hall.add(revealDial);
-    const revealRing=new THREE.Mesh(new THREE.TorusGeometry(1.05,.055,12,96),edgeGold);revealDial.add(revealRing);
-    const revealInner=new THREE.Mesh(new THREE.TorusGeometry(.72,.025,10,72),blueLine);revealDial.add(revealInner);
-    const revealCore=new THREE.Mesh(new THREE.CircleGeometry(.5,64),new THREE.MeshBasicMaterial({color:0xd8ae68,transparent:true,opacity:.65}));
-    revealCore.position.z=-.02;revealDial.add(revealCore);
+    // Keep the corridor clear so the template gallery is the visual focus.
     const revealLight=new THREE.PointLight(0x39bdff,8,13);revealLight.position.set(0,0,1.4);hall.add(revealLight);
-        const clock=new THREE.Clock();
-    let start=null;
-    const duration=6.4;
-    const ease=t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;
+        let start=null;
+    // 3.65 seconds of motion plus a 0.35 second fade = a 4 second intro.
+    const duration=3.65;
+    const smooth=t=>{t=Math.max(0,Math.min(1,t));return t*t*(3-2*t);};
+    const segment=(t,a,b)=>smooth((t-a)/(b-a));
     function render(now){
       if(finished)return;
       if(start===null)start=now;
       const t=Math.min((now-start)/1000/duration,1);
-      const p=ease(t);
-      // Turn the locking wheel first, retract bolts, then swing the heavy door.
-      const wheelP=Math.min(Math.max((t-.05)/.2,0),1);
+      // Unlock, retract the bolts and swing the door with overlapping, eased motion.
+      const wheelP=segment(t,.015,.24);
       hub.rotation.z=wheelP*Math.PI*3.5;
-      const boltP=Math.min(Math.max((t-.16)/.16,0),1);
+      const boltP=segment(t,.12,.32);
       bolts.forEach(b=>{b.group.position.x=2.36+boltP*.48;});
-      const openP=Math.min(Math.max((t-.24)/.2,0),1);
+      const openP=segment(t,.13,.39);
       hinge.rotation.y=-openP*1.72;
-      // Accelerated camera move through the opening into the holographic command hall.
-      const travel=Math.min(Math.max((t-.27)/.53,0),1);
-      const zoom=Math.min(Math.max((t-.78)/.22,0),1);
-      const smoothZoom=zoom*zoom*(3-2*zoom);
-      // First reveal the floating template gallery, then push directly into the featured WebVault homepage.
-      camera.position.z=10.8-travel*16.0-smoothZoom*2.0;
-      camera.position.y=.12+Math.sin(t*3.2)*.035;
-      camera.fov=39+travel*7-smoothZoom*17;camera.updateProjectionMatrix();
+
+      // Glide through the open doorway and past the floating template gallery.
+      const travel=segment(t,.27,.78);
+      // Finish with a deliberate, smooth push into the WebVault homepage.
+      const zoom=segment(t,.72,1);
+      camera.position.z=10.8-travel*16.0-zoom*2.4;
+      camera.position.x=Math.sin(travel*Math.PI)*.22*(1-zoom);
+      camera.position.y=.12+Math.sin(t*Math.PI)*.025;
+      camera.fov=39+travel*5-zoom*15;camera.updateProjectionMatrix();
       camera.lookAt(0,.05,-travel*12.1);
-      featuredWebsite.scale.setScalar(.92+smoothZoom*.09);
+      featuredWebsite.scale.setScalar(.92+zoom*.11);
       innerLight.intensity=10+travel*45;
       portalGlow.intensity=38+travel*24;
       keyLight.intensity=170*(1-travel*.62);
-      holograms.forEach((panel,i)=>{panel.position.y+=Math.sin(now*.0015+i)*.0008;panel.rotation.z=Math.sin(now*.0007+i)*.012;});
-      revealDial.rotation.z=now*.00022;
-      featuredWebsite.rotation.y=Math.sin(now*.00035)*.008;
+      holograms.forEach((panel,i)=>{
+        panel.position.y+=Math.sin(now*.0015+i)*.00045;
+        panel.rotation.z=Math.sin(now*.0007+i)*.008;
+      });
+      featuredWebsite.rotation.y=Math.sin(now*.00035)*.006;
       renderer.render(scene,camera);
-      if(t>=.12&&t<.34)status.textContent="Unlocking the vault";
-      else if(t>=.27&&t<.72)status.textContent="Entering the WebVault interface";
-      else if(t>=.72)status.textContent="Welcome inside WebVault";
+      if(t<.18)status.textContent="Unlocking the vault";
+      else if(t<.76)status.textContent="Explore the WebVault template gallery";
+      else status.textContent="Your website, brought into focus";
       if(t<1)raf=requestAnimationFrame(render);else finish();
     }
     function resize(){camera.aspect=window.innerWidth/window.innerHeight;camera.updateProjectionMatrix();renderer.setSize(window.innerWidth,window.innerHeight);}
@@ -1154,9 +1152,9 @@
     console.warn("WebVault 3D intro unavailable; using animated fallback.",err);
     status.textContent="Opening secure passage";
     intro.classList.add("fallback-active");
-    window.setTimeout(finish,4800);
+    window.setTimeout(finish,3650);
   }
-  window.setTimeout(()=>{if(!finished)finish();},8200);
+  window.setTimeout(()=>{if(!finished)finish();},4600);
 })();
 </script>
 
