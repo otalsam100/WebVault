@@ -942,8 +942,7 @@
       const ring=torus(passage,2.75,.095,j%2?brass:steel,-.2-j*1.35);
       ring.scale.set(1,1,1);
     }
-    const farGlow=new THREE.Mesh(new THREE.CircleGeometry(2.3,96),new THREE.MeshBasicMaterial({color:0x9e8053}));
-    farGlow.position.z=-7.5;passage.add(farGlow);
+    // No solid disc at the end of the tunnel: keep the sightline open to the website gallery.
     const portalGlow=new THREE.PointLight(0xffc978,38,24);portalGlow.position.set(0,0,-6);passage.add(portalGlow);
     // Heavy circular door frame fixed to the chamber.
     const frame=new THREE.Group();scene.add(frame);
