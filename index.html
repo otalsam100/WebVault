@@ -122,6 +122,42 @@
   .includes dt{font-weight:600;font-size:1.12rem}
   .includes dd{margin:6px 0 0;color:var(--ink-soft)}
 
+  /* Nationwide service section: dimensional website showcase */
+  #small-business-web-design{position:relative;overflow:hidden;background:radial-gradient(ellipse at 82% 20%,#e9eff8 0,transparent 38%),linear-gradient(135deg,#fff 0%,#f8fafc 100%)}
+  #small-business-web-design:before{content:"";position:absolute;width:520px;height:520px;border:1px solid #b9925522;border-radius:50%;right:-210px;top:-180px;pointer-events:none}
+  #small-business-web-design .wrap{position:relative}
+  .nationwide-intro{display:grid;grid-template-columns:1.05fr .95fr;gap:34px;align-items:center}
+  .nationwide-copy h2{max-width:17ch}
+  .nationwide-visual{height:340px;position:relative;perspective:1100px;isolation:isolate}
+  .nationwide-globe{position:absolute;width:210px;height:210px;right:9%;top:38px;border:1px solid #b9925570;border-radius:50%;transform:rotateX(67deg) rotateZ(-22deg);box-shadow:0 0 0 18px #b9925508,0 0 0 38px #b9925506}
+  .nationwide-globe:before,.nationwide-globe:after{content:"";position:absolute;inset:14px 42px;border:1px solid #9aacc255;border-radius:50%;transform:rotateY(58deg)}
+  .nationwide-globe:after{inset:0 65px;transform:rotateY(-58deg)}
+  .nationwide-orbit{position:absolute;width:285px;height:110px;right:0;top:92px;border:1px solid #8ca2bd66;border-radius:50%;transform:rotate(-28deg)}
+  .nationwide-orbit:after{content:"";position:absolute;width:9px;height:9px;right:30px;top:11px;border-radius:50%;background:#b99255;box-shadow:0 0 16px #b9925599}
+  .site-float{position:absolute;width:218px;border:1px solid #dce4ed;border-radius:12px;background:#fff;box-shadow:0 25px 55px -28px #17263866;overflow:hidden;transform-style:preserve-3d}
+  .site-float.main{left:2%;top:52px;z-index:3;transform:rotateY(-17deg) rotateX(5deg) rotateZ(-4deg)}
+  .site-float.side{right:0;bottom:26px;width:178px;z-index:2;transform:rotateY(-20deg) rotateX(4deg) rotateZ(7deg)}
+  .site-top{height:19px;background:#f0f3f7;border-bottom:1px solid #e4e9ef;display:flex;align-items:center;gap:4px;padding:0 8px}
+  .site-top i{width:5px;height:5px;border-radius:50%;background:#b7c2cf}
+  .site-screen{padding:13px;background:linear-gradient(145deg,#f8fafc,#eaf0f6);min-height:155px}
+  .site-screen b{display:block;font:800 11px Archivo,sans-serif;letter-spacing:.1em;color:#172638}
+  .site-screen span{display:block;font-size:7px;letter-spacing:.12em;color:#98713a;margin-top:5px}
+  .site-hero{height:54px;margin-top:12px;border-radius:5px;background:linear-gradient(120deg,#172638,#47617c 60%,#b99255);position:relative;overflow:hidden}
+  .site-hero:after{content:"";position:absolute;width:80px;height:80px;border:1px solid #ffffff66;border-radius:50%;right:15px;top:-25px;box-shadow:0 0 0 12px #ffffff12}
+  .site-lines{display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-top:9px}
+  .site-lines i{height:19px;border-radius:3px;background:#dce4ed}
+  .site-lines i:first-child{background:#e8dfd0}
+  .site-float.side .site-screen{min-height:125px}
+  .site-float.side .site-hero{height:39px}
+  .nationwide-tag{position:absolute;z-index:4;left:0;bottom:13px;padding:10px 13px;border:1px solid #e1e7ef;border-radius:9px;background:#ffffffdf;backdrop-filter:blur(8px);box-shadow:0 12px 30px -20px #17263866;font:700 .64rem ui-monospace,monospace;letter-spacing:.08em;color:#536477}
+  .nationwide-tag b{color:#98713a}
+  .nationwide-features{margin-top:22px}
+  @keyframes nationFloat{0%,100%{translate:0 0}50%{translate:0 -9px}}
+  .site-float.main{animation:nationFloat 7s ease-in-out infinite}
+  .site-float.side{animation:nationFloat 8s ease-in-out -2s infinite}
+  @media(max-width:860px){.nationwide-intro{grid-template-columns:1fr;gap:10px}.nationwide-visual{width:min(440px,100%);margin:0 auto;height:300px}.nationwide-features{margin-top:8px}}
+  @media(prefers-reduced-motion:reduce){.site-float.main,.site-float.side{animation:none}}
+
   .steps{margin-top:44px;display:grid;grid-template-columns:repeat(3,1fr);gap:28px;counter-reset:s;list-style:none;padding:0}
   .steps li{counter-increment:s;border-top:3px solid var(--brass);padding-top:18px}
   .steps li::before{content:counter(s);font-family:"Archivo",sans-serif;font-stretch:112%;font-weight:800;font-size:2.4rem;color:var(--brass);line-height:1;display:block;margin-bottom:10px}
@@ -693,10 +729,27 @@
   <!-- NATIONWIDE SERVICE AREA / SEO -->
   <section id="small-business-web-design" aria-labelledby="small-business-web-design-h">
     <div class="wrap">
-      <p class="kicker">SMALL BUSINESS WEBSITE DESIGN · UNITED STATES</p>
-      <h2 id="small-business-web-design-h">Custom website design for small businesses nationwide.</h2>
-      <p class="section-lead">WebVault helps small businesses across the United States build a professional online presence with custom, mobile-friendly websites. Whether you're starting from scratch or replacing an outdated site, we make the process clear, practical and straightforward.</p>
-      <div class="includes">
+      <div class="nationwide-intro">
+        <div class="nationwide-copy">
+          <p class="kicker">SMALL BUSINESS WEBSITE DESIGN · UNITED STATES</p>
+          <h2 id="small-business-web-design-h">Custom website design for small businesses nationwide.</h2>
+          <p class="section-lead">WebVault helps small businesses across the United States build a professional online presence with custom, mobile-friendly websites. Whether you're starting from scratch or replacing an outdated site, we make the process clear, practical and straightforward.</p>
+        </div>
+        <div class="nationwide-visual" aria-hidden="true">
+          <div class="nationwide-globe"></div>
+          <div class="nationwide-orbit"></div>
+          <div class="site-float main">
+            <div class="site-top"><i></i><i></i><i></i></div>
+            <div class="site-screen"><b>YOUR BUSINESS, ELEVATED.</b><span>BUILT TO MAKE AN IMPRESSION</span><div class="site-hero"></div><div class="site-lines"><i></i><i></i><i></i><i></i></div></div>
+          </div>
+          <div class="site-float side">
+            <div class="site-top"><i></i><i></i><i></i></div>
+            <div class="site-screen"><b>MADE FOR GROWTH.</b><span>YOUR NEXT CHAPTER STARTS HERE</span><div class="site-hero"></div><div class="site-lines"><i></i><i></i></div></div>
+          </div>
+          <div class="nationwide-tag"><b>01—50</b> · SERVING BUSINESSES NATIONWIDE</div>
+        </div>
+      </div>
+      <div class="includes nationwide-features">
         <div><dt>Custom websites, built around your business</dt><dd>Present your services, work, products and customer reviews in a way that makes it easy for visitors to take the next step.</dd></div>
         <div><dt>Designed for phones and local customers</dt><dd>Make it simple for customers to browse your site, call you, find your location or request a quote from their phone.</dd></div>
         <div><dt>Google-friendly foundations</dt><dd>We set up descriptive page titles, search descriptions, clear page structure and a sitemap to help search engines understand your website.</dd></div>
