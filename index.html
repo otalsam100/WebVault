@@ -1014,9 +1014,74 @@
     // Subtle industrial floor plane and reflection-catching plinth.
     const floor=new THREE.Mesh(new THREE.PlaneGeometry(80,80),new THREE.MeshStandardMaterial({color:0x0a1219,metalness:.55,roughness:.42}));
     floor.rotation.x=-Math.PI/2;floor.position.y=-3.25;floor.position.z=-2;floor.receiveShadow=true;scene.add(floor);
-    const clock=new THREE.Clock();
+    // Futuristic reveal hall beyond the vault: dark architectural ribs and blue holographic interfaces.
+    const hall=new THREE.Group();scene.add(hall);
+    const hallSteel=new THREE.MeshStandardMaterial({color:0x172632,metalness:.88,roughness:.3});
+    const edgeGold=new THREE.MeshStandardMaterial({color:0xb88e50,metalness:.8,roughness:.26,emissive:0x241506});
+    const blueGlow=new THREE.MeshBasicMaterial({color:0x36c9ff,transparent:true,opacity:.72,side:THREE.DoubleSide,depthWrite:false});
+    const blueLine=new THREE.MeshBasicMaterial({color:0x72e4ff,transparent:true,opacity:.95});
+    const hologramBack=new THREE.MeshBasicMaterial({color:0x0876a8,transparent:true,opacity:.16,side:THREE.DoubleSide,depthWrite:false});
+    // Long polished floor, ceiling light strips and structural ribs.
+    const hallFloor=new THREE.Mesh(new THREE.PlaneGeometry(15,34),new THREE.MeshStandardMaterial({color:0x101c25,metalness:.78,roughness:.22}));
+    hallFloor.rotation.x=-Math.PI/2;hallFloor.position.set(0,-3.18,-13);hall.add(hallFloor);
+    for(let side of [-1,1]){
+      for(let z=-7;z>=-23;z-=3.2){
+        const rib=new THREE.Mesh(new THREE.BoxGeometry(.34,7.4,.42),hallSteel);
+        rib.position.set(side*5.6,.25,z);rib.rotation.z=side*-.12;hall.add(rib);
+        const lightStrip=new THREE.Mesh(new THREE.BoxGeometry(.055,5.8,.06),new THREE.MeshBasicMaterial({color:0xc8eaff}));
+        lightStrip.position.set(side*5.32,.25,z);hall.add(lightStrip);
+      }
+      const rail=new THREE.Mesh(new THREE.BoxGeometry(.07,.06,31),edgeGold);
+      rail.position.set(side*4.5,-3.1,-13);hall.add(rail);
+    }
+    for(let z=-8;z>=-23;z-=4){
+      const ceiling=new THREE.Mesh(new THREE.BoxGeometry(9.5,.12,.22),new THREE.MeshBasicMaterial({color:0xd8e9f5}));
+      ceiling.position.set(0,3.7,z);hall.add(ceiling);
+    }
+    // Each hologram is a translucent glass panel with a bright technical frame and schematic details.
+    function hologram(x,y,z,w,h,rotation=0){
+      const g=new THREE.Group();g.position.set(x,y,z);g.rotation.y=rotation;hall.add(g);
+      const back=new THREE.Mesh(new THREE.PlaneGeometry(w,h),hologramBack);g.add(back);
+      const edges=[
+        [[-w/2,-h/2,0],[w/2,-h/2,0]],[[w/2,-h/2,0],[w/2,h/2,0]],
+        [[w/2,h/2,0],[-w/2,h/2,0]],[[-w/2,h/2,0],[-w/2,-h/2,0]]
+      ];
+      edges.forEach(pair=>{const geo=new THREE.BufferGeometry().setFromPoints(pair.map(p=>new THREE.Vector3(...p)));g.add(new THREE.Line(geo,blueLine));});
+      const grid=new THREE.Mesh(new THREE.PlaneGeometry(w*.92,h*.88),new THREE.MeshBasicMaterial({color:0x20a8e0,wireframe:true,transparent:true,opacity:.22,depthWrite:false}));
+      grid.position.z=.008;g.add(grid);
+      for(let i=0;i<5;i++){
+        const bar=new THREE.Mesh(new THREE.BoxGeometry(w*.055,h*(.16+(i%3)*.12),.012),blueGlow);
+        bar.position.set(-w*.34+i*w*.13,-h*.29+((i%2)*.03),.025);g.add(bar);
+      }
+      const ring=new THREE.Mesh(new THREE.TorusGeometry(Math.min(w,h)*.19,.018,8,48),blueLine);
+      ring.position.set(w*.24,h*.12,.035);g.add(ring);
+      const inner=new THREE.Mesh(new THREE.TorusGeometry(Math.min(w,h)*.12,.009,6,48),blueGlow);
+      inner.position.copy(ring.position);inner.position.z=.04;g.add(inner);
+      for(let i=0;i<4;i++){
+        const line=new THREE.Mesh(new THREE.BoxGeometry(w*.22,.018,.01),blueGlow);
+        line.position.set(-w*.2,h*.27-i*.09,.03);g.add(line);
+      }
+      const glow=new THREE.PointLight(0x24bfff,1.4,4);glow.position.set(0,0,.45);g.add(glow);
+      return g;
+    }
+    const holograms=[
+      hologram(-3.1,1.15,-10.4,3.0,1.8,.13),
+      hologram(2.8,.2,-10.1,3.25,1.9,-.12),
+      hologram(.1,2.55,-12.7,2.5,1.45,0),
+      hologram(-1.5,-1.45,-11.8,2.15,1.15,.08),
+      hologram(1.85,-1.55,-13.2,2.0,1.12,-.08),
+      hologram(-3.7,-.8,-14.2,1.65,1.0,.16)
+    ];
+    // Gold-lit central mechanism echoes the vault dial as the camera enters the hall.
+    const revealDial=new THREE.Group();revealDial.position.set(.2,.45,-14.8);hall.add(revealDial);
+    const revealRing=new THREE.Mesh(new THREE.TorusGeometry(1.05,.055,12,96),edgeGold);revealDial.add(revealRing);
+    const revealInner=new THREE.Mesh(new THREE.TorusGeometry(.72,.025,10,72),blueLine);revealDial.add(revealInner);
+    const revealCore=new THREE.Mesh(new THREE.CircleGeometry(.5,64),new THREE.MeshBasicMaterial({color:0xd8ae68,transparent:true,opacity:.65}));
+    revealCore.position.z=-.02;revealDial.add(revealCore);
+    const revealLight=new THREE.PointLight(0x39bdff,8,13);revealLight.position.set(0,0,1.4);hall.add(revealLight);
+        const clock=new THREE.Clock();
     let start=null;
-    const duration=8.2;
+    const duration=5.8;
     const ease=t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;
     function render(now){
       if(finished)return;
@@ -1024,25 +1089,27 @@
       const t=Math.min((now-start)/1000/duration,1);
       const p=ease(t);
       // Turn the locking wheel first, retract bolts, then swing the heavy door.
-      const wheelP=Math.min(Math.max((t-.12)/.27,0),1);
-      hub.rotation.z=wheelP*Math.PI*3;
-      const boltP=Math.min(Math.max((t-.3)/.17,0),1);
+      const wheelP=Math.min(Math.max((t-.05)/.2,0),1);
+      hub.rotation.z=wheelP*Math.PI*3.5;
+      const boltP=Math.min(Math.max((t-.16)/.16,0),1);
       bolts.forEach(b=>{b.group.position.x=2.36+boltP*.48;});
-      const openP=Math.min(Math.max((t-.43)/.26,0),1);
+      const openP=Math.min(Math.max((t-.24)/.2,0),1);
       hinge.rotation.y=-openP*1.72;
-      // Dolly through the doorway and into the lit interior.
-      const travel=Math.min(Math.max((t-.56)/.44,0),1);
-      camera.position.z=10.8-travel*10.1;
-      camera.position.y=.12+Math.sin(t*2.5)*.035;
-      camera.fov=39+travel*9;camera.updateProjectionMatrix();
-      camera.lookAt(0,0,-travel*2.2);
+      // Accelerated camera move through the opening into the holographic command hall.
+      const travel=Math.min(Math.max((t-.34)/.66,0),1);
+      camera.position.z=10.8-travel*16.5;
+      camera.position.y=.12+Math.sin(t*3.2)*.045;
+      camera.fov=39+travel*13;camera.updateProjectionMatrix();
+      camera.lookAt(0,.05,-travel*8.8);
       innerLight.intensity=10+travel*45;
       portalGlow.intensity=38+travel*24;
-      keyLight.intensity=170*(1-travel*.38);
+      keyLight.intensity=170*(1-travel*.62);
+      holograms.forEach((panel,i)=>{panel.position.y+=Math.sin(now*.0015+i)*.0008;panel.rotation.z=Math.sin(now*.0007+i)*.012;});
+      revealDial.rotation.z=now*.00022;
       renderer.render(scene,camera);
-      if(t>=.25&&t<.45)status.textContent="Unlocking the vault";
-      else if(t>=.45&&t<.68)status.textContent="Opening secure passage";
-      else if(t>=.68)status.textContent="Welcome inside WebVault";
+      if(t>=.12&&t<.34)status.textContent="Unlocking the vault";
+      else if(t>=.34&&t<.72)status.textContent="Entering the WebVault interface";
+      else if(t>=.72)status.textContent="Welcome inside WebVault";
       if(t<1)raf=requestAnimationFrame(render);else window.setTimeout(finish,350);
     }
     function resize(){camera.aspect=window.innerWidth/window.innerHeight;camera.updateProjectionMatrix();renderer.setSize(window.innerWidth,window.innerHeight);}
@@ -1052,9 +1119,9 @@
     console.warn("WebVault 3D intro unavailable; using animated fallback.",err);
     status.textContent="Opening secure passage";
     intro.classList.add("fallback-active");
-    window.setTimeout(finish,8200);
+    window.setTimeout(finish,5800);
   }
-  window.setTimeout(()=>{if(!finished)finish();},11500);
+  window.setTimeout(()=>{if(!finished)finish();},8200);
 })();
 </script>
 
